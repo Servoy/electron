@@ -1,0 +1,9 @@
+allowCreationRelatedRecords:true,
+foreignDataSource:"db:/example_data/categories",
+items:[
+{foreignColumnName:"categoryid",primaryDataProviderID:"categoryid",typeid:23,uuid:"C0DAB480-D6AA-4DBA-9442-F0AEC74C3A27"}
+],
+name:"product_to_category",
+primaryDataSource:"db:/example_data/products",
+typeid:22,
+uuid:"5849F787-1562-460D-9C9D-29C58D28F173"
