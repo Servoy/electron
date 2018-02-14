@@ -1,0 +1,151 @@
+body {
+  margin: 20px !important;
+  padding: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  margin-top: 50px !important;
+  background-color: #324777 !important;
+}
+
+header {
+  background-color: #21324F;
+  height: 50px;
+  width:100%;
+  color: blue;
+  margin: 0;
+  margin-top: -70px;
+  margin-left: -20px;
+  margin-right: -20px;
+  position: fixed;
+  z-index: 20;
+}
+
+h1, h2 {
+  font-weight: 100;
+}
+
+h2 {
+  margin: 0 0 10px;
+}
+
+button {
+  -webkit-app-region: no-drag;
+}
+
+
+/* Closing Maximazing and Minimizing Traffic-Lights (Apple)  */
+
+.traffic-lights {
+  top: 14px;
+  left: 20px;
+  position: absolute;
+  width: 56px;
+}
+.focus .traffic-lights > .traffic-light-close, .traffic-lights:hover > .traffic-light-close, .traffic-lights:active > .traffic-light-close {
+  background-color: #ff6159;
+}
+.focus .traffic-lights > .traffic-light-close:active:hover, .traffic-lights:hover > .traffic-light-close:active:hover, .traffic-lights:active > .traffic-light-close:active:hover {
+  background-color: #bf4942;
+}
+.focus .traffic-lights > .traffic-light-minimize, .traffic-lights:hover > .traffic-light-minimize, .traffic-lights:active > .traffic-light-minimize {
+  background-color: #ffbd2e;
+}
+.focus .traffic-lights > .traffic-light-minimize:active:hover, .traffic-lights:hover > .traffic-light-minimize:active:hover, .traffic-lights:active > .traffic-light-minimize:active:hover {
+  background-color: #bf8e22;
+}
+.focus .traffic-lights > .traffic-light-maximize, .traffic-lights:hover > .traffic-light-maximize, .traffic-lights:active > .traffic-light-maximize {
+  background-color: #28c941;
+}
+.focus .traffic-lights > .traffic-light-maximize:active:hover, .traffic-lights:hover > .traffic-light-maximize:active:hover, .traffic-lights:active > .traffic-light-maximize:active:hover {
+  background-color: #1d9730;
+}
+.traffic-lights > .traffic-light:before, .traffic-lights > .traffic-light:after {
+  visibility: hidden;
+}
+.traffic-lights:hover > .traffic-light:before, .traffic-lights:hover > .traffic-light:after, .traffic-lights:active > .traffic-light:before, .traffic-lights:active > .traffic-light:after {
+  visibility: visible;
+}
+
+.traffic-light {
+  border-radius: 100%;
+  padding: 0;
+  height: 12px;
+  width: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  margin-right: 3.5px;
+  position: relative;
+  outline: none;
+}
+
+.traffic-light-close {
+  background-color: #ff6159;
+}
+
+.traffic-light-minimize {
+  background-color: #ffbd2e;
+}
+
+.traffic-light-maximize {
+  background-color: #28c941;
+}
+
+
+.traffic-light:before, .traffic-light:after {
+  content: '';
+  position: absolute;
+  border-radius: 1px;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+.traffic-light-close:before, .traffic-light-close:after {
+  background-color: #4d0000;
+  width: 8px;
+  height: 1px;
+}
+.traffic-light-close:before {
+  transform: rotate(45deg);
+}
+.traffic-light-close:after {
+  transform: rotate(-45deg);
+}
+.traffic-light-close:active:hover:before, .traffic-light-close:active:hover:after {
+  background-color: #190000;
+}
+.traffic-light-minimize:before {
+  background-color: #995700;
+  width: 8px;
+  height: 1px;
+}
+.traffic-light-minimize:active:hover:before {
+  background-color: #592800;
+}
+.traffic-light-maximize:before {
+  background-color: #006500;
+  width: 6px;
+  height: 6px;
+}
+.traffic-light-maximize:after {
+  background-color: #28c941;
+  width: 10px;
+  height: 2px;
+  transform: rotate(45deg);
+}
+.traffic-light-maximize:active:hover:before {
+  background-color: #003200;
+}
+.traffic-light-maximize:active:hover:after {
+  background-color: #1d9730;
+}
+
+#content {
+ margin: 20px;
+ margin-top: 70px;
+}
+
+main {
+  width: 100%;
+}

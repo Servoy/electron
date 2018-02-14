@@ -1,0 +1,9 @@
+{
+    "injectScripts": {
+        "jquery": "app/resources/scripts/jquery-3.2.0.js",
+        "bootstrap": "app/resources/scripts/bootstrap.js"
+    },
+    "otherstuff": {
+        "thing": [[1,42],[2,2]]
+     }
+}

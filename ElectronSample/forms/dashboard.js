@@ -204,7 +204,6 @@ function onShowDashboard(firstShow, event) {
 				data: data_variables
 			}]
 		}
-
 	};
 	elements.country_bar_chart.setData(data);
 	elements.country_bar_chart.setOptions(options);
