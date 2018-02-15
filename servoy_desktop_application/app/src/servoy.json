@@ -1,6 +1,5 @@
 {
     "injectScripts": {
-        "jquery": "app/resources/scripts/jquery-3.2.0.js",
         "bootstrap": "app/resources/scripts/bootstrap.js"
     },
     "otherstuff": {

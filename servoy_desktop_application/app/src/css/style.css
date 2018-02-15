@@ -1,22 +1,24 @@
+html {
+  width: 100vw;
+  height: 100vh;
+}
+
 body {
-  margin: 20px !important;
+  width: 100vw;
+  height: 100vh;
   padding: 0;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 100;
-  margin-top: 50px !important;
   background-color: #324777 !important;
 }
 
 header {
+  position: fixed;
   background-color: #21324F;
   height: 50px;
-  width:100%;
+  width: 100%;
   color: blue;
   margin: 0;
-  margin-top: -70px;
-  margin-left: -20px;
-  margin-right: -20px;
-  position: fixed;
   z-index: 20;
 }
 
@@ -142,8 +144,16 @@ button {
 }
 
 #content {
- margin: 20px;
- margin-top: 70px;
+  height: 100%;
+}
+
+webview {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100%;        /* Viewport-relative units */
+  width: 100%;
+  display: inline-flex !important;
 }
 
 main {
