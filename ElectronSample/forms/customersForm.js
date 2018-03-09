@@ -10,6 +10,9 @@
  */
 function onCellClick(row, column) {
 	switch (column) {
+	case 7:
+		plugins.electronFile.sendMessage("hello")
+	break;
 	case 8:
 		forms.Main.elements.sidenav_1.containedForm = forms.editCustomer;
 		forms.editCustomer.edit(foundset);
@@ -58,3 +61,41 @@ function getSearchProvider() {
 //function onShow(firstShow, event) {
 //	searchProvider = "companyname"
 //}
+
+/**
+ * @param {JSEvent} event
+ *
+ * @properties={typeid:24,uuid:"9E8CFC69-4FF8-430D-A4B3-1A503E18DE42"}
+ */
+function onActionGenerateExcel(event) {
+	var workbook = scopes.svyExcelUtils.createWorkbookFromFoundSet(foundset,
+	foundset.alldataproviders,
+	foundset.alldataproviders, 
+	scopes.svyExcelUtils.FILE_FORMAT.XLSX);
+	workbook.sheetName = 'All Customers';
+	
+	//create styles for header and rows
+	var headerStyle = workbook.createHeaderStyle();
+	headerStyle
+	.setFont('Calibri,0,11')
+	.setFillPattern(scopes.svyExcelUtils.FILL_PATTERN.SOLID_FOREGROUND)
+	.setFillForegroundColor(scopes.svyExcelUtils.INDEXED_COLOR.LIGHT_ORANGE)
+	.setAlignment(scopes.svyExcelUtils.ALIGNMENT.CENTER);
+	workbook.headerStyle = headerStyle;
+	
+	var rowStyle = workbook.createRowStyle();
+	rowStyle
+	.setFont('Calibri,0,11');
+	workbook.rowStyle = rowStyle;
+	var bytes = workbook.getBytes();
+	application.output(bytes.toString());
+	//write to file
+	//plugins.electronFile.saveFile("Hello world");
+	plugins.electronFile.saveExcelFile(bytes, "downloads");
+	//workbook.writeToFile('dataset.xlsx');
+}
+
+
+
+
+

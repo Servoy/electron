@@ -13,6 +13,7 @@ parameters:null\
 }\
 }",
 dataSource:"db:/example_data/customers",
+encapsulation:28,
 extendsID:"880326DE-EF33-40C3-B921-497E62875749",
 items:[
 {
@@ -173,6 +174,19 @@ packagename:\"12grid\",\
 specname:\"column\"\
 }",
 items:[
+{
+json:{
+onActionMethodID:"9E8CFC69-4FF8-430D-A4B3-1A503E18DE42",
+styleClass:"btn btn-success createButton",
+text:"Generate Excel File"
+},
+location:"818,278",
+name:"generated_excel_customers",
+size:"100,100",
+typeName:"bootstrapcomponents-button",
+typeid:47,
+uuid:"48B9AAC7-D355-4DB3-9EBE-0B7C9D8DDA60"
+},
 {
 json:{
 onActionMethodID:"8B576CBE-8496-4A79-B343-7D02D6F7FE71",

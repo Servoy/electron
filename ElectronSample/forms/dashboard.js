@@ -28,7 +28,12 @@ var product_table = datasources.db.example_data.products.getFoundSet();
 var employee_table = datasources.db.example_data.employees.getFoundSet();
 
 /**
- * @properties={typeid:35,uuid:"9982E8CF-9F3D-47A6-BF77-4A3DE3CE33FF",variableType:-4}
+ * @properties={typeid:35,uuid:"8C43CDEA-0C2E-4B89-BAB8-88D6F33B204C",variableType:-4}
+ */
+var printer_list = new Array();
+
+/**
+ * @properties={typeid:35,uuid:"56B06463-BCC6-41E0-AC7A-B215346BC9A0",variableType:-4}
  */
 var options = {
 	title: {
@@ -221,4 +226,26 @@ function onShowDashboard(firstShow, event) {
 function onClick(dataset_index, index, label, value) {
 	forms.Main.elements.sidenav_1.containedForm = forms.customerCountryTable;
 	forms.customerCountryTable.setCountry(label);
+}
+
+/**
+ * @param {JSEvent} event
+ *
+ * @properties={typeid:24,uuid:"BD6DA2CA-3775-4FFA-A584-6055E6E3B46C"}
+ */
+function onActionPrint(event) {
+	plugins.electronFile.sendToPrinter("KaolPrinter", "Hello");
+}
+
+/**
+ * @param {JSEvent} event
+ *
+ * @properties={typeid:24,uuid:"C428E2FA-47ED-4855-973F-6D9ABCFE1604"}
+ */
+function onActionGetPrinterList(event) {
+	var printers = plugins.electronFile.getPrinterList();
+	for (var i = 0; i < printers.length; i++) {
+	    printer_list[i] = printers[i].name
+	}
+	application.setValueListItems("printers",printer_list)
 }

@@ -1,8 +1,0 @@
-{
-    "injectScripts": {
-        "bootstrap": "app/resources/scripts/bootstrap.js"
-    },
-    "otherstuff": {
-        "thing": [[1,42],[2,2]]
-     }
-}

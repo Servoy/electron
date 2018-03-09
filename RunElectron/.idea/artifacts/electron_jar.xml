@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="electron:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/electron_jar</output-path>
+    <root id="archive" name="electron.jar">
+      <element id="module-output" name="RunElectron" />
+    </root>
+  </artifact>
+</component>

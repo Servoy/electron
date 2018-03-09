@@ -1,11 +1,14 @@
-const {ipcRenderer, webFrame} = require('electron');
-const path = require('path');
+const settings = require('./../config/servoy.json');
 const renderer = require('./../components/renderer');
+const {ipcRenderer, webFrame} = require('electron');
 const inject = require('./../preload/inject');
-const settings = require(__dirname + '/../servoy.json');
 const proc = require("process");
+const path = require('path');
 
-
+/*
+* This function sets the global IPC renderer
+* And it uglifies scripts and then combines it into an single file (scripts.js)
+*/
 function loadScripts(){
   renderer.setIPC();
   inject.uglifyScripts();
@@ -23,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
       targetElement = targetElement.parentElement;
     }
     const targetHref = targetElement.href;
-
     if (!targetHref) {
       ipcRenderer.once('contextMenuClosed', () => {
         clickSelector(event.target);

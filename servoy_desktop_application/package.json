@@ -1,22 +1,51 @@
 {
   "name": "servoy_desktop_application",
+  "productName": "Servoy Desktop Application",
   "version": "1.0.0",
   "description": "Servoy Desktop Application",
   "main": "app/src/main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "rebuild": "electron-rebuild -f -w servoy_desktop_application",
+    "dev-up": "npm install && (cd ./app && npm install)",
+    "dev-up-win": "npm install & cd app & npm install"
+  },
+  "bin": {
+    "servoy": "lib/cli.js"
   },
   "author": "Dion Haneveld",
   "license": "ISC",
   "dependencies": {
+    "ajv": "^6.1.1",
+    "asar": "^0.14.2",
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "commander": "^2.14.1",
+    "copy": "^0.3.1",
     "electron": "^1.8.2",
-    "electron-dl": "^1.11.0",
+    "electron-progressbar": "^1.0.2",
     "express": "^4.16.2",
+    "ext-name": "^5.0.0",
+    "hasbin": "^1.2.3",
     "jquery": "^3.3.1",
+    "loglevel": "^1.6.1",
+    "ncp": "^2.0.0",
     "nightmare": "^2.10.0",
     "path": "^0.12.7",
+    "printer": "^0.2.2",
+    "pupa": "^1.0.0",
+    "q": "^1.5.1",
     "request": "^2.83.0",
+    "shelljs": "^0.8.1",
+    "tmp": "0.0.33",
     "uglify-js": "^3.3.10",
-    "valid-url": "^1.0.9"
+    "unused-filename": "^1.0.0",
+    "valid-url": "^1.0.9",
+    "validator": "^9.4.1"
+  },
+  "devDependencies": {
+    "electron-builder": "^20.0.8",
+    "electron-packager": "^11.0.1",
+    "electron-rebuild": "^1.7.3"
   }
 }
