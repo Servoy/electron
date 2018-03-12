@@ -7,7 +7,7 @@ const ProgressBar = require('progress');
 class ProgressView {
   constructor(total) {
     this.tickParts = total * 10;
-    this.bar = new ProgressBar('  :task [:bar] :percent', {
+    this.bar = new ProgressBar(':task [:bar] :percent', {
       complete: '=',
       incomplete: ' ',
       total: total * this.tickParts,
@@ -69,6 +69,4 @@ class ProgressView {
   }
 }
 
-module.exports = {
-  ProgressView
-}
+module.exports = ProgressView;

@@ -62,16 +62,17 @@ function appArgs(options) {
 
 /**
  * Injects the scripts in the right folder when packaging an app
- * @param {string} srcs
+ * @param {string} src
  * @param {string} dest
  */
-function injectScripts(srcs, dest) {
-  if (!srcs) {
+function injectScripts(src, dest) {
+  if (!src) {
     return new Promise((resolve) => {
       resolve();
     });
   }
-  const promises = srcs.map(src => new Promise((resolve, reject) => {
+
+  const promises = src.map(src => new Promise((resolve, reject) => {
     if (!fs.existsSync(src)) {
       reject(new Error('Error copying injection files: file not found'));
       return;
@@ -106,21 +107,18 @@ function injectScripts(srcs, dest) {
   });
 }
 
-
 /**
- * Change the app name
+ * Alter the app name so their is no collision
  * @param {string} appName
  * @param {string} url
  */
 function alterAppName(appName, url) {
-  // use a simple 3 byte random string to prevent collision
   const hash = crypto.createHash('md5');
   hash.update(url);
   const postFixHash = hash.digest('hex').substring(0, 6);
   const altered = _.kebabCase(appName.toLowerCase());
   return `${altered}-servoy-${postFixHash}`;
 }
-
 
 /**
  * Set the name of the package.json
@@ -137,7 +135,8 @@ function setPackageName(appPath, name, url) {
 
 /**
  * Set the URL
- * @param {string} configPath
+ * @param {string} appPath
+ * @param {string} name
  * @param {string} url
  */
 function setURL(configPath, url){
@@ -160,6 +159,7 @@ function setApp(source, destination, options, callback) {
   const srcFolder = path.join(destination, '/src');
   const configPath = path.join(destination, '/config/servoy.json');
   // const asarApp = path.join(destination, '/app.asar');
+
   copy(source, destination, (error) => {
     if (error) {
       callback(`Error Copying temporary directory: ${error}`);

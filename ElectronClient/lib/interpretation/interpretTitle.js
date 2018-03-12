@@ -12,7 +12,7 @@ function interpretTitle(url) {
     method: 'get',
     url,
     headers: {
-      // fake a user agent because some pages will throw a 404 error
+       // fake a user agent because some pages will throw a 404 error
       'User-Agent': USER_AGENT,
     },
   };
@@ -23,6 +23,4 @@ function interpretTitle(url) {
   });
 }
 
-module.exports = {
-  interpretTitle
-}
+module.exports = interpretTitle;

@@ -7,7 +7,7 @@ const iconHelper = require('./../helpers/iconHelper');
  * Check if the icon is an ICO file
  * @param {string} iconPath
  */
-function isIco(icon_path) {
+function isIco(iconPath) {
   return path.extname(iconPath) === '.ico';
 }
 
@@ -15,31 +15,32 @@ function isIco(icon_path) {
  * Check if the icon is an PNG file
  * @param {string} iconPath
  */
-function isPng(icon_path) {
-  return path.extname(icon_path) === '.png';
+function isPng(iconPath) {
+  return path.extname(iconPath) === '.png';
 }
 
 /**
  * Check if the icon is an ICNS file
  * @param {string} iconPath
  */
-function isIcns(icon_path) {
-  return path.extname(icon_path) === '.icns';
+function isIcns(iconPath) {
+  return path.extname(iconPath) === '.icns';
 }
 
 /**
- * @callback extendIcons
+ * @callback iconsCallback
  * @param error
  * @param options
  */
 
 /**
- * Checks the file extension and if necessary converts it to a png or icns file
- * @param inpOptions
- * @param {extendIcons} callback
+ * Converts an icon from png to icn. If the icon is no png then it converts
+ * it to png first. It will fill options.icon.
+ * @param inputOptions
+ * @param {iconsCallback} callback
  */
-function setIcon(inpOptions, callback) {
-  const options = Object.assign({}, inpOptions);
+function setIcon(inputOptions, callback) {
+  const options = Object.assign({}, inputOptions);
   const returnCallback = () => {
     callback(null, options);
   };
@@ -52,14 +53,14 @@ function setIcon(inpOptions, callback) {
   }
 
   if (options.platform === 'win32') {
-    if (isIco(options.icon)) {
+    if (iconIsIco(options.icon)) {
       returnCallback();
       return;
     }
 
     iconHelper.convertToIco(icon_path)
-      .then((resultPath) => {
-        options.icon = resultPath;
+      .then((destination) => {
+        options.icon = destination;
         returnCallback();
       })
       .catch((error) => {
@@ -76,8 +77,8 @@ function setIcon(inpOptions, callback) {
     }
 
     iconHelper.convertToPng(icon_path)
-      .then((resultPath) => {
-        options.icon = resultPath;
+      .then((destination) => {
+        options.icon = destination;
         returnCallback();
       })
       .catch((error) => {
@@ -99,8 +100,9 @@ function setIcon(inpOptions, callback) {
   }
 
   iconHelper.convertToIcns(icon_path)
-    .then((resultPath) => {
-      options.icon = resultPath;
+    .then((destination) => {
+      // (outPath);
+      options.icon = destination;
       returnCallback();
     })
     .catch((error) => {

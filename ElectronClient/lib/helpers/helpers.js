@@ -23,8 +23,8 @@ function isWindows() {
  * @param {string} url
  * @return {Object}
  */
-function downloadFile(url) {
-  return axios.get(url, {
+function downloadFile(fileUrl) {
+  return axios.get(fileUrl, {
     responseType: 'arraybuffer',
   })
     .then((response) => {
@@ -33,7 +33,7 @@ function downloadFile(url) {
       }
       return {
         data: response.data,
-        ext: path.extname(url),
+        ext: path.extname(fileUrl),
       };
     });
 }
@@ -55,6 +55,7 @@ function allowedIconFormats(platform) {
 
   const icnsToPng = false;
   const icnsToIco = false;
+
   const formats = [];
 
   // Temporary override of shell scripting since its not supported on Windows

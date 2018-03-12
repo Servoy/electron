@@ -9,11 +9,10 @@ const BIN_PATH = path.join(__dirname, '../..', 'bin/convertToIcns');
 /**
  * @callback pngToIcnsCallback
  * @param error
- * @param {string} dest If error, will return the original png src
+ * @param {string} icnsDest If error, will return the original png src
  */
 
 /**
- *
  * @param {string} src
  * @param {string} dest
  * @param {pngToIcnsCallback} callback
@@ -24,16 +23,16 @@ function convertToIcns(src, dest, callback) {
     return;
   }
 
-  shell.exec(`${BIN_PATH} ${src} ${dest}`, {silent: true}, (exitCode, stdOut, stdError) => {
+  shell.exec(`${BIN_PATH} ${src} ${dest}`, {silent: true }, (exit, out, error) => {
     if (stdOut.includes('icon.iconset:error') || exitCode) {
-      if (exitCode) {
+      if (exit) {
         callback({
-          stdOut,
-          stdError,
+          out,
+          error,
         }, src);
         return;
       }
-      callback(stdOut, src);
+      callback(error, src);
       return;
     }
     callback(null, dest);
@@ -42,7 +41,7 @@ function convertToIcns(src, dest, callback) {
 
 /**
  * Converts the png to a temporary directory which will be cleaned up on process exit
- * @param {string} src
+ * @param {string} pngSrc
  * @param {pngToIcnsCallback} callback
  */
 function convertToIcnsTmp(src, callback) {

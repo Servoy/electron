@@ -1,12 +1,12 @@
 {
-  "name": "servoy_desktop_application",
-  "productName": "Servoy Desktop Application",
+  "name": "ElectronClient",
+  "productName": "Electron Client",
   "version": "1.0.0",
-  "description": "Servoy Desktop Application",
+  "description": "Electron Client",
   "main": "app/src/main.js",
   "scripts": {
     "start": "electron .",
-    "rebuild": "electron-rebuild -f -w servoy_desktop_application",
+    "rebuild": "electron-rebuild -f -w ElectronClient",
     "dev-up": "npm install && (cd ./app && npm install)",
     "dev-up-win": "npm install & cd app & npm install"
   },

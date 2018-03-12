@@ -1,6 +1,13 @@
 [
 {
 encapsulation:0,
+mimeType:"application/json",
+name:"electron.json",
+typeid:37,
+uuid:"B1A4C370-A99A-4C0F-BD43-F495FE2BAF8C"
+},
+{
+encapsulation:0,
 mimeType:"image/jpeg",
 name:"profile_image.jpeg",
 typeid:37,

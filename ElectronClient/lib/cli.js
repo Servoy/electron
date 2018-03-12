@@ -1,7 +1,9 @@
-#!/usr/bin/env node
+#! /usr/bin/env node
+// DONT REMOVE THIS LINE. APP WONT WORK OTHERWISE
+
+const program = require('commander');
 const servoy = require('./index');
 const dns = require('dns');
-const program = require('commander');
 const packageJson = require('./../package');
 const log = require('loglevel');
 
@@ -90,10 +92,8 @@ if (require.main === module) {
   if (!process.argv.slice(2).length) {
     program.help();
   }
-
   checkInternet();
   servoy(program, (error, appPath) => {
-    // console.log(program);
     if (error) {
       log.error(error);
       return;

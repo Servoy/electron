@@ -1,6 +1,7 @@
 const icon = require('./icon');
 const userAgent = require('./userAgent');
 const name = require('./name');
+
 const scopes = [{
   scope: 'userAgent',
   task: userAgent,
@@ -13,7 +14,7 @@ const scopes = [{
 }];
 
 // Modifies the result of each promise from a scalar
-// value to a object containing its fieldname
+// value to a object containing its scope name
 function wrap(scopeName, promise, args) {
   try {
     return promise(args)
@@ -21,13 +22,11 @@ function wrap(scopeName, promise, args) {
         [scopeName]: result,
       }));
   } catch(err) {
-
   }
 }
 
 // Returns a list of promises which will all resolve
-// with the following result: {[fieldName]: fieldvalue}
+// with the following result: {[scopeName]: scopeValue}
 module.exports = function(options) {
-  console.log(options);
   return scopes.map(({scope, task}) => wrap(scope, task, options));
 }

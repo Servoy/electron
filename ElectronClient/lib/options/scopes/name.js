@@ -3,7 +3,7 @@ const {transformFilename} = require('./../../utils');
 const {interpretTitle} = require('./../../interpretation');
 const {DEFAULT_APP_NAME} = require('./../../constants');
 
-function interpretName({name, targetUrl}) {
+function interpretName({ name, targetUrl }) {
   if (name && name.length > 0) {
     return Promise.resolve(name);
   }

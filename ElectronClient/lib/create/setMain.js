@@ -5,22 +5,21 @@ const ncp = require('ncp');
 const async = require('async');
 const hasBinary = require('hasbin');
 const log = require('loglevel');
-const view = require('./../helpers/ProgressView');
+const ProgressView = require('./../helpers/ProgressView');
 const optionsFactory = require('./../options/optionsMain');
-const setIcon = require('./setIcon');
+const setIcon= require('./setIcon');
 const helpers = require('./../helpers/helpers');
 const setApp = require('./setApp');
 const copy = ncp.ncp;
 
 /**
- * Checks the app path array to determine if the packaging was completed successfully
- * @param appPathArray Result from electron-packager
+ * Checks if the electron-packager was completed by checking if the path array
+ * is filled
+ * @param appPathArray
  * @returns {*}
  */
 function getAppPath(appPathArray) {
   if (appPathArray.length === 0) {
-    // directory already exists, --overwrite is not set
-    // exit here
     return null;
   }
 
@@ -77,7 +76,6 @@ function maybeCopyIcons(options, appPath, callback) {
  * Removes invalid parameters from options if building for Windows while not on Windows
  * and Wine is not installed
  * @param options
- * @param param
  */
 function removeInvalidOptions(options, param) {
   const packageOptions = JSON.parse(JSON.stringify(options));
@@ -147,12 +145,11 @@ function maybeNoWin32metadataOption(options) {
  * @param {buildAppCallback} callback
  */
 function setMain(inpOptions, callback) {
-  
   const options = Object.assign({}, inpOptions);
   // pre process app
   const tmpObj = tmp.dirSync({unsafeCleanup: true});
   const tmpPath = tmpObj.name;
-  const progress = new view.ProgressView(5);
+  const progress = new ProgressView(5);
   async.waterfall([
     (cb) => {
       progress.tick('interpretation process');

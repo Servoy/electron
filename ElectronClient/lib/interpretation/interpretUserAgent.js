@@ -2,7 +2,7 @@ const axios = require('axios');
 const _ = require('lodash');
 const log = require('loglevel');
 const ELECTRON_VERSIONS_URL = 'https://atom.io/download/atom-shell/index.json';
-const DEFAULT_CHROME_VERSION = '65.0.3325.146';
+const DEFAULT_CHROME_VERSION = '58.0.3029.110';
 
 /**
  * Get the chrome version for the electron version
@@ -10,12 +10,13 @@ const DEFAULT_CHROME_VERSION = '65.0.3325.146';
  * @param {string} url
  * @return {String||Error} electron version
  */
-function getChromeVersionForElectronVersion(electronVersion, url = ELECTRON_VERSIONS_URL) {
-  return axios.get(url, {timeout: 5000})
+function chromeForElectron(electronVersion, url = ELECTRON_VERSIONS_URL) {
+  return axios.get(url, { timeout: 5000 })
     .then((response) => {
       if (response.status !== 200) {
         throw new Error(`Bad request: Status code ${response.status}`);
       }
+
       const { data } = response;
       const electronVersionToChromeVersion = _.zipObject(
         data.map(d => d.version),
@@ -61,7 +62,7 @@ function getUserAgent(chromeVersion, platform) {
  * @return {String||Error} electron version
  */
 function interpretUserAgent(electronVersion, platform, url = ELECTRON_VERSIONS_URL) {
-  return getChromeVersionForElectronVersion(electronVersion, url)
+  return chromeForElectron(electronVersion, url)
     .then(chromeVersion => getUserAgent(chromeVersion, platform))
     .catch(() => {
       log.warn(`Unable to infer chrome version for user agent, using ${DEFAULT_CHROME_VERSION}`);
