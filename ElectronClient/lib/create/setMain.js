@@ -1,15 +1,19 @@
-const path = require('path');
+'use-strict'
+
+const serialHooks = require('electron-packager/hooks').serialHooks
+const optionsFactory = require('./../options/optionsMain');
+const ProgressView = require('./../helpers/ProgressView');
+const helpers = require('./../helpers/helpers');
 const packager = require('electron-packager');
+const {rebuild} = require('electron-rebuild');
+const setIcon = require('./setIcon');
+const hasBinary = require('hasbin');
+const setApp = require('./setApp');
+const log = require('loglevel');
+const async = require('async');
+const path = require('path');
 const tmp = require('tmp');
 const ncp = require('ncp');
-const async = require('async');
-const hasBinary = require('hasbin');
-const log = require('loglevel');
-const ProgressView = require('./../helpers/ProgressView');
-const optionsFactory = require('./../options/optionsMain');
-const setIcon= require('./setIcon');
-const helpers = require('./../helpers/helpers');
-const setApp = require('./setApp');
 const copy = ncp.ncp;
 
 /**
@@ -34,7 +38,7 @@ function getAppPath(appPathArray) {
  * and Wine is not installed
  * @param options
  */
-function maybeNoIconOption(options) {
+function checkIconOption(options) {
   const packageOptions = JSON.parse(JSON.stringify(options));
   if (options.platform === 'win32' && !helpers.isWindows()) {
     if (!hasBinary.sync('wine')) {
@@ -52,17 +56,15 @@ function maybeNoIconOption(options) {
  * @param {string} appPath
  * @param callback
  */
-function maybeCopyIcons(options, appPath, callback) {
+function checkCopyIcons(options, appPath, callback) {
   if (!options.icon) {
     callback();
     return;
   }
-
   if (options.platform === 'darwin' || options.platform === 'mas') {
     callback();
     return;
   }
-
   // windows & linux
   // put the icon file into the app
   const destIconPath = path.join(appPath, 'resources/app');
@@ -93,7 +95,7 @@ function removeInvalidOptions(options, param) {
  * and Wine is not installed
  * @param options
  */
-function maybeNoAppCopyrightOption(options) {
+function checkAppCopyrightOption(options) {
   return removeInvalidOptions(options, 'appCopyright');
 }
 
@@ -102,7 +104,7 @@ function maybeNoAppCopyrightOption(options) {
  * and Wine is not installed
  * @param options
  */
-function maybeNoBuildVersionOption(options) {
+function checkBuildVersionOption(options) {
   return removeInvalidOptions(options, 'buildVersion');
 }
 
@@ -111,7 +113,7 @@ function maybeNoBuildVersionOption(options) {
  * and Wine is not installed
  * @param options
  */
-function maybeNoAppVersionOption(options) {
+function checkAppVersionOption(options) {
   return removeInvalidOptions(options, 'appVersion');
 }
 
@@ -120,7 +122,7 @@ function maybeNoAppVersionOption(options) {
  * and Wine is not installed
  * @param options
  */
-function maybeNoVersionStringOption(options) {
+function checkVersionStringOption(options) {
   return removeInvalidOptions(options, 'versionString');
 }
 
@@ -129,27 +131,25 @@ function maybeNoVersionStringOption(options) {
  * and Wine is not installed
  * @param options
  */
-function maybeNoWin32metadataOption(options) {
+function checkWin32metadataOption(options) {
   return removeInvalidOptions(options, 'win32metadata');
 }
 
-/**
- * @callback buildAppCallback
- * @param error
- * @param {string} appPath
- */
+function checkElectronVersion(options){
+    console.log(process.versions.electron);
+}
 
 /**
- *
- * @param {{}} inpOptions
- * @param {buildAppCallback} callback
+ * @param {{}} inputOptions
+ * @param {createAppCallback} callback
  */
-function setMain(inpOptions, callback) {
-  const options = Object.assign({}, inpOptions);
+function setMain(inputOptions, callback) {
+  const options = Object.assign({}, inputOptions);
+
   // pre process app
   const tmpObj = tmp.dirSync({unsafeCleanup: true});
   const tmpPath = tmpObj.name;
-  const progress = new ProgressView(5);
+  const progress = new ProgressView(6);
   async.waterfall([
     (cb) => {
       progress.tick('interpretation process');
@@ -173,6 +173,25 @@ function setMain(inpOptions, callback) {
       });
     },
     (opts, cb) => {
+      progress.tick('rebuilding modules');
+      const rebuildOptions = {
+        electronVersion: opts.electronVersion,
+        arch: opts.arch,
+        buildPath: tmpPath,
+        onlyModules: ['printer', 'serialport'],
+        headerURL: "https://atom.io/download/atom-shell"
+      }
+      rebuild(rebuildOptions)
+      .then(() => {
+        console.info('Rebuild Successful')
+        cb(null, opts);
+      })
+      .catch((e) => {
+        console.error("Building modules didn't work!");
+        console.error(e);
+      });
+    },
+    (opts, cb) => {
       progress.tick('setting icons');
       setIcon(opts, (error, optionsWithIcon) => {
         cb(null, optionsWithIcon);
@@ -180,20 +199,19 @@ function setMain(inpOptions, callback) {
     },
     (opts, cb) => {
       progress.tick('packaging app');
-      // maybe skip passing icon parameter to electron packager
-      let packageOptions = maybeNoIconOption(opts);
-      // maybe skip passing other parameters to electron packager
-      packageOptions = maybeNoAppCopyrightOption(packageOptions);
-      packageOptions = maybeNoAppVersionOption(packageOptions);
-      packageOptions = maybeNoBuildVersionOption(packageOptions);
-      packageOptions = maybeNoVersionStringOption(packageOptions);
-      packageOptions = maybeNoWin32metadataOption(packageOptions);
-      // packagerConsole.override();
-      packager(packageOptions, (error, appPathArray) => {
-        // pass options which still contains the icon to waterfall
+      // skip passing icon parameter to electron packager if needed
+      let packageOptions = checkIconOption(opts);
+      // skip passing other parameters to electron packager if needed
+      packageOptions = checkAppCopyrightOption(packageOptions);
+      packageOptions = checkAppVersionOption(packageOptions);
+      packageOptions = checkBuildVersionOption(packageOptions);
+      packageOptions = checkVersionStringOption(packageOptions);
+      packageOptions = checkWin32metadataOption(packageOptions);
+      packager(packageOptions,  (error, appPathArray) => {
         cb(error, opts, appPathArray);
       });
     },
+
     (opts, appPathArray, cb) => {
       progress.tick('finalizing app');
       const appPath = getAppPath(appPathArray);
@@ -201,9 +219,10 @@ function setMain(inpOptions, callback) {
         cb();
         return;
       }
-      maybeCopyIcons(opts, appPath, (error) => {
+      checkCopyIcons(opts, appPath, (error) => {
         cb(error, appPath);
       });
+
     },
   ], (error, appPath) => {
     callback(error, appPath);

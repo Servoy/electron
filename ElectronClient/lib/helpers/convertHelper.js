@@ -1,7 +1,8 @@
+const helpers = require('./helpers');
 const shell = require('shelljs');
 const path = require('path');
 const tmp = require('tmp');
-const helpers = require('./helpers');
+
 
 tmp.setGracefulCleanup();
 const BIN_PATH = path.join(__dirname, '../..', 'bin/convertToIcns');

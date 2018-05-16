@@ -1,5 +1,5 @@
-const log = require('loglevel');
 const config = require('../../../app/config/servoy.json');
+const log = require('loglevel');
 const fs = require('fs');
 
 /**

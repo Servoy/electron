@@ -1,6 +1,25 @@
-const os = require('os');
+const sanitizeFilenameLib = require('sanitize-filename');
+const {DEFAULT_APP_NAME} = require('./../constants');
 const hasBinary = require('hasbin');
 const path = require('path');
+const _ = require('lodash');
+const os = require('os');
+
+
+/**
+ * Checks if the current platform is OSX
+ * @returns {boolean}
+ */
+function transformFilename(platform, str) {
+  let result = sanitizeFilenameLib(str);
+  // remove all non ascii or use default app name
+  result = result.replace(/[^\x00-\x7F]/g, '') || DEFAULT_APP_NAME;
+  // spaces will cause problems with Ubuntu when pinned to the dock
+  if (platform === 'linux') {
+    return _.kebabCase(result);
+  }
+  return result;
+}
 
 /**
  * Checks if the current platform is OSX
@@ -114,4 +133,5 @@ module.exports = {
   isOSX,
   isWindows,
   allowedIconFormats,
+  transformFilename
 };

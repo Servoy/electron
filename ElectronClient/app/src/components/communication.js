@@ -30,6 +30,7 @@ function initPath(path){
 */
 function setDownloadListener(window){
   window.webContents.session.on('will-download', (event, item, webContents) => {
+      console.log("run");
 			checkPath();
 			totalBytes += item.getTotalBytes();
 			const filename = item.getFilename();
@@ -67,7 +68,10 @@ function setDownloadListener(window){
 					if (process.platform === 'darwin') {
 						app.dock.downloadFinished(filePath);
 					}
-					shell.showItemInFolder(path.join(dir, item.getFilename()));
+          const item_path = path.join(dir, item.getFilename());
+          console.log(item_path);
+					shell.showItemInFolder(item_path);
+          shell.openItem(item_path);
 				}
 			});
   });

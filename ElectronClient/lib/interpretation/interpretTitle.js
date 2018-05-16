@@ -1,7 +1,7 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
 const USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1)' +
 'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.1 Safari/537.36';
+const cheerio = require('cheerio');
+const axios = require('axios');
 
 /**
  * Interpretation of the title

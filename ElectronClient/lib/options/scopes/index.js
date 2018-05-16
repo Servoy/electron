@@ -1,5 +1,5 @@
-const icon = require('./icon');
 const userAgent = require('./userAgent');
+const icon = require('./icon');
 const name = require('./name');
 
 const scopes = [{

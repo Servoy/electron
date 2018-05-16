@@ -1,8 +1,8 @@
-const axios = require('axios');
-const _ = require('lodash');
-const log = require('loglevel');
 const ELECTRON_VERSIONS_URL = 'https://atom.io/download/atom-shell/index.json';
 const DEFAULT_CHROME_VERSION = '58.0.3029.110';
+const log = require('loglevel');
+const axios = require('axios');
+const _ = require('lodash');
 
 /**
  * Get the chrome version for the electron version

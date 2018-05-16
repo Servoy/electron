@@ -1,9 +1,10 @@
-const settings = require(__dirname + './../config/servoy.json');
+// const settings = require(__dirname + './../config/servoy.json');
 const uglify = require('uglify-js');
 const path = require('path');
 const fs = require('fs');
 
 // Path where the scripts need to be uglified and combined
+const settings = require(__dirname + '/../config/servoy.json');
 const INJECT_JS_PATH = path.join(__dirname, '../', 'preload/scripts.js');
 
 

@@ -5,6 +5,7 @@
 	<projects>
 		<project>resources</project>
 		<project>electron</project>
+		<project>svyUtils$Excel</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

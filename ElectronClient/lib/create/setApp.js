@@ -1,14 +1,14 @@
-const fs =  require('fs');
-const crypto = require('crypto');
-const asar = require('asar');
-const _ = require('lodash');
-const path = require('path');
-const ncp = require('ncp');
-const copy = ncp.ncp;
-const log = require('loglevel');
 const program = require('commander');
-const q = require('q');
+const crypto = require('crypto');
+const log = require('loglevel');
+const asar = require('asar');
+const path = require('path');
 const util = require('util');
+const _ = require('lodash');
+const fs =  require('fs');
+const ncp = require('ncp');
+const q = require('q');
+const copy = ncp.ncp;
 
 /**
  * Pass arguments to servoy-options.json

@@ -1,6 +1,6 @@
-const interpretOs = require('./interpretOs');
-const interpretTitle = require('./interpretTitle');
 const interpretUserAgent = require('./interpretUserAgent');
+const interpretTitle = require('./interpretTitle');
+const interpretOs = require('./interpretOs');
 
 module.exports = {
   interpretOs,

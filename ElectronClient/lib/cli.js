@@ -1,11 +1,11 @@
 #! /usr/bin/env node
-// DONT REMOVE THIS LINE. APP WONT WORK OTHERWISE
+// DONT REMOVE THIS LINE. PROGRAM WONT WORK OTHERWISE
 
+const packageJson = require('./../package');
 const program = require('commander');
 const servoy = require('./index');
-const dns = require('dns');
-const packageJson = require('./../package');
 const log = require('loglevel');
+const dns = require('dns');
 
 function collect(val, memo) {
   memo.push(val);

@@ -4,18 +4,18 @@
         "tether": "./resources/scripts/tether.js"
     },
      "options": {
-       "title": "Servoy Desktop Application",
-       "width": 1200,
-       "height": 1200,
-       "frame": true,
-       "icon": "app/resources/icon/test_icon.png",
-       "url": "http://coincap.io/",
+       "title": "Electron Client",
+       "width": 1000,
+       "height": 800,
+       "frame": false,
+       "icon": "app/resources/icons/img_543467.png",
+       "url": "http://localhost:8080/solutions/ElectronSample/index.html",
        "resizable": true,
        "show": false,
        "webPreferences": {
          "javascript": true,
          "plugins": true,
-         "nodeIntegration":false
+         "nodeIntegration":true
        }
      }
 }

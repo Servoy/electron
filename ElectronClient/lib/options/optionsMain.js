@@ -1,11 +1,10 @@
-const log = require('loglevel');
-const interpretOs = require('./../interpretation/interpretOs');
+const {interpretPlatform, interpretArch} = require('./../interpretation/interpretOs');
+const {ELECTRON_VERSION, PLACEHOLDER_APP_DIR } = require('./../constants');
+const packageJson = require('./../../package.json');
+const asyncConfig = require('./asyncConfig');
 const selectIcon = require('./scopes/icon');
 const alterUrl = require('./alterUrl');
-const packageJson = require('./../../package.json');
-const {ELECTRON_VERSION, PLACEHOLDER_APP_DIR } = require('./../constants');
-const asyncConfig = require('./asyncConfig');
-const {interpretPlatform, interpretArch} = interpretOs;
+const log = require('loglevel');
 
 /**
  * Extracts only desired keys from inpOptions and augments it with defaults
@@ -52,7 +51,7 @@ module.exports = function (inpOptions) {
     crashReporter: inpOptions.crashReporter || false,
     // workaround for electron-packager#375
     tmpdir: false,
-    zoom: inpOptions.zoom || 1.0,
+    zoom: inpOptions.zoom || 0,
     internalUrls: inpOptions.internalUrls || null,
     singleInstance: inpOptions.singleInstance || false,
     appVersion: inpOptions.appVersion || null,

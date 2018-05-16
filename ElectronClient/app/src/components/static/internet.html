@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>No Internet</title>
+    <link rel="stylesheet" type="text/css" href="./../../css/internet.css">
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script>if (window.module) module = window.module;</script>
+  </head>
+  <body>
+    <div id="content">
+    <div class="no-internet-icon">
+    </div>
+    <div class="error-message">
+      <h2>Oops it seems that there is no internet connection. Try again by clicking the button below.</h2>
+    </div>
+    <button id="reload-button" onclick='reload()'>Reload</button>
+    </div>
+  </body>
+  <script>
+  console.log(window.ipcRenderer);
+  function reload(){
+   window.ipcRenderer.send('reload');
+  }
+  </script>
+</html>

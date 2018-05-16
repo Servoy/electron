@@ -32,7 +32,6 @@ function printText(object){
 function printFile(object){
   console.log('platform:', process.platform);
   console.log('try to print file: ' + object.filename);
-
   if( process.platform != 'win32') {
     printer.printFile({filename:object.filename,
       printer: process.env[3], // printer name, if missing then will print to default printer
@@ -57,7 +56,6 @@ function printFile(object){
   });
   }
 }
-
 
 function printPDF(object){
   util = require('util'),

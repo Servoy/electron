@@ -1,16 +1,15 @@
 const ProgressBar = require('progress');
-
 /**
 * This class uses the progress library to show the process of
 * packaging the application
 */
 class ProgressView {
   constructor(total) {
-    this.tickParts = total * 10;
+    this.tickParts = total;
     this.bar = new ProgressBar(':task [:bar] :percent', {
       complete: '=',
       incomplete: ' ',
-      total: total * this.tickParts,
+      total: (total - 0.25) * (this.tickParts + 0.15),
       width: 50,
       clear: true,
     });

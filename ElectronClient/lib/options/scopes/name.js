@@ -1,7 +1,8 @@
-const log = require('loglevel');
-const {transformFilename} = require('./../../utils');
 const {interpretTitle} = require('./../../interpretation');
 const {DEFAULT_APP_NAME} = require('./../../constants');
+const {transformFilename} = require('./../../helpers/helpers');
+const log = require('loglevel');
+
 
 function interpretName({ name, targetUrl }) {
   if (name && name.length > 0) {
