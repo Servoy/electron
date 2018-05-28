@@ -1,6 +1,7 @@
 const communication = require('./../communication');
 const {BrowserWindow} = require('electron');
 const path = require('path');
+const url = require('url');
 
 /**
 * Create the browser window;
@@ -35,7 +36,11 @@ function createWindow(config){
     window.webContents.on('did-fail-load', (event, errorCode, errorDescription, validatedURL, isMainFrame) => {
       if (errorDescription === 'ERR_INTERNET_DISCONNECTED') {
         console.log(errorDescription);
-        alert('no internet');
+        window.loadURL(url.format({
+        pathname: path.join(__dirname, './../static/internet.html'),
+        protocol: 'file:',
+        slashes: true
+        }));
       }
     });
     // When the window is closed set the window to null;

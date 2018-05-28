@@ -26,7 +26,6 @@ function getAppPath(appPathArray) {
   if (appPathArray.length === 0) {
     return null;
   }
-
   if (appPathArray.length > 1) {
     log.warn('Warning: This should not be happening, packaged app path contains more than one element:', appPathArray);
   }

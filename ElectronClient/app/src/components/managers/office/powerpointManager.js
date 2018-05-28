@@ -1,5 +1,5 @@
 var path = require('path');
-var powerpoint = require('./../../libraries/office/index').powerpoint;
+var powerpoint = require('./../../../libraries/office/index').powerpoint;
 
   //Create a new instance of PowerPoint and try to open the presentation
 function open(path){

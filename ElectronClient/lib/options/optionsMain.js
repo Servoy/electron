@@ -7,7 +7,7 @@ const alterUrl = require('./alterUrl');
 const log = require('loglevel');
 
 /**
- * Extracts only desired keys from inpOptions and augments it with defaults
+ * Extracts only desired keys from inpOptions and fills the rest with defaults
  * @param {Object} inpOptions
  * @returns {Promise}
  */

@@ -16,7 +16,7 @@ const PNGoutputDir = oSub + 'png/';
  * it to png first. It will fill options.icon.
  * @param inputOptions
  * @param {iconsCallback} callback
- */
+*/
 function setIcon(inputOptions, callback) {
   const options = Object.assign({}, inputOptions);
   const icon_path = path.join(__dirname, '/../../', options.icon);
@@ -29,10 +29,14 @@ function setIcon(inputOptions, callback) {
 }
 
 /**
+ * Convert the selected icon to all the different sizes.
+ * Based on the platform, convert it to different extension with the help of the
+ * icongen library
+ * If its for Linux just put all the different PNG files into a folder.
  * @callback iconsCallback
  * @param input
  * @param options
- */
+*/
 function createIcons(input, options, callback) {
   const returnCallback = () => {
     callback(null, options);
@@ -70,6 +74,9 @@ function createIcons(input, options, callback) {
   });
 }
 
+/**
+ * Rename the PNG files for the linux version of Electron.
+*/
 function renamePNGs(position){
      var startName = pngSizes[position] + '.png';
      var endName = pngSizes[position] + 'x' + pngSizes[position] + '.png';
@@ -85,10 +92,14 @@ function renamePNGs(position){
      });
  }
 
+/**
+  * Get the path of the temporary folder.
+  * @callback callback
+  * @param input
+  * @param size
+*/
 function createPNG(input, size, callback) {
      var fileName = size.toString() + '.png';
-
-     // console.log(PNGoutputDir + fileName);
      // make dir if does not exist
      if (!fs.existsSync(output)) {
          fs.mkdirSync(output);
@@ -115,6 +126,9 @@ function createPNG(input, size, callback) {
      });
  }
 
+ /**
+  * Get the path of the temporary folder.
+*/
 function getTmpDirPath() {
   const tempIconDirObj = tmp.dirSync({unsafeCleanup: true});
   return tempIconDirObj.name;

@@ -11,7 +11,7 @@ const q = require('q');
 const copy = ncp.ncp;
 
 /**
- * Pass arguments to servoy-options.json
+ * Pass arguments to servoy.json
  * @param options
  */
 function appArgs(options) {

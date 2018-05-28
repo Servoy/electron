@@ -2,7 +2,7 @@ const communication = require('./components/communication');
 const mainWindow = require('./components/windows/mainWindow');
 const infoWindow = require('./components/windows/infoWindow');
 const networkManager = require('./components/managers/networkManager');
-const powerpointManager = require('./components/officeManagers/powerpointManager');
+const powerpointManager = require('./components/managers/office/powerpointManager');
 const {app, ipcMain, webContents} = require('electron');
 const printer = require('./components/printer/printer');
 const fs = require('fs');
@@ -25,10 +25,11 @@ let internetWindow;
 function create(){
   window = mainWindow.createWindow(config);
   window.loadURL(url.format({
-  pathname: path.join(__dirname, 'index.html'),
-  protocol: 'file:',
-  slashes: true
+    pathname: path.join(__dirname, 'index.html'),
+    protocol: 'file:',
+    slashes: true
   }));
+  // window.loadURL(config.options.url);
   window.webContents.openDevTools();
 }
 
@@ -58,8 +59,8 @@ function init(){
     global.url = config.options.url;
     global.title = config.options.title;
     global.internet = internet_template;
-    var presentation_path = path.join(app.getPath('desktop'), 'it_applied_engineering_presentation_dion_haneveld_lifi.pptx');
-    powerpointManager.open(presentation_path);
+    // var presentation_path = path.join(app.getPath('desktop'), 'it_applied_engineering_presentation_dion_haneveld_lifi.pptx');
+    // powerpointManager.open(presentation_path);
     create();
 }
 

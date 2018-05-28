@@ -234,7 +234,7 @@ function onClick(dataset_index, index, label, value) {
  * @properties={typeid:24,uuid:"BD6DA2CA-3775-4FFA-A584-6055E6E3B46C"}
  */
 function onActionPrint(event) {
-	plugins.electron.sendToPrinter("KaolPrinter", "Hello");
+	plugins.electron.sendToPrinter("PrinterName", "Hello");
 }
 
 /**
