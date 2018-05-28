@@ -4,6 +4,7 @@ For making Electron work with a solution created with the Servoy Developer, an A
 
 ## Sending Information
 
+
 ### Step 1.
 
 Navigate to the Web Packages header in the Solution Explorer, which is stated under the current solution. Right click and you will see some options. Select “create service package project”.
@@ -21,6 +22,7 @@ Now under Web Packages the new service project is listed. In this case we called
 Provide the name of the service you want to create. For now we just simply call it electron
 
 ![ScreenShot](/tutorial-images/sending-information/4.png)
+
 
 ### Step 2.
 
@@ -41,6 +43,7 @@ To use the function “sendToPrinter” we have to specify it in the generated s
 ![ScreenShot](/tutorial-images/sending-information/8.png)
 
 ![ScreenShot](/tutorial-images/sending-information/9.png)
+
 
 ### Step 3.
 
@@ -67,9 +70,11 @@ This is done with code completion.
 
 ![ScreenShot](/tutorial-images/sending-information/14.png)
 
+
 ## Retrieving information
 
 To understand how retrieving information from Electron works you should first read on how the implementation of sending information is done because these steps will go further after the creation of an Angular Service. Retrieving information from Electron needs a bit of adjustment of the generated JavaScript file in the Angular Service. How it works will be shown in the steps below. 
+
 
 ### Step 1.
 
@@ -87,6 +92,7 @@ Inside the specification file we have to add the function again. This time we ha
 
 ![ScreenShot](/tutorial-images/retrieving-information/2.png)
 
+
 ### Step 2.
 
 In step 3 of sending information, we now replace the print hello button with a Retrieve Printers button in the form we chose. We also add a combobox with a custom valuelist. Let’s call this valuelist “printerlist”.  
@@ -101,6 +107,7 @@ Now we have to add an onAction event again. Let’s call this event onActionRetr
 Inside the onActionRetrievePrinters function we first create an Array printerList. Then we call the retrievePrinters function from the Angular service to get the printers from Electron. After we do a for-loop to get all the printers from the json object and add it to the printerList Array and fill the valuelist “printerlist”.
 
 ![ScreenShot](/tutorial-images/retrieving-information/5.png)
+
 
 ### Step 3.
 
