@@ -1,7 +1,6 @@
 {
     "injectScripts": {
-        "bootstrap": "./resources/scripts/bootstrap.js",
-        "tether": "./resources/scripts/tether.js"
+
     },
      "options": {
        "title": "Electron Client",

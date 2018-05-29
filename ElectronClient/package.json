@@ -1,8 +1,8 @@
 {
-  "name": "ElectronClient",
-  "productName": "Electron Client",
+  "name": "ServoyElectronCLI",
+  "productName": "ServoyElectronCLI",
   "version": "1.0.0",
-  "description": "Electron Client",
+  "description": "Servoy Electron Command Line Interface",
   "main": "app/src/main.js",
   "scripts": {
     "start": "electron .",
@@ -36,8 +36,6 @@
     "jquery": "^3.3.1",
     "loglevel": "^1.6.1",
     "ncp": "^2.0.0",
-    "nightmare": "^2.10.0",
-    "npm": "^5.8.0",
     "office-script": "^1.4.0",
     "path": "^0.12.7",
     "ping-lite": "^1.0.2",
@@ -53,6 +51,10 @@
     "unused-filename": "^1.0.0",
     "valid-url": "^1.0.9",
     "validator": "^9.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Servoy/electron.git"
   },
   "devDependencies": {}
 }
