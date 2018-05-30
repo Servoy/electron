@@ -4,7 +4,8 @@
   "description": "Electron made for integration with Servoy",
   "main": "main.js",
   "scripts": {
-    "build": "gulp build"
+    "build": "gulp build",
+    "test": "snyk test"
   },
   "paths": {
     "config": "config/servoy.json"
@@ -13,8 +14,8 @@
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
     "copy": "^0.3.2",
-    "dns-socket": "^1.6.1",
-    "electron": "^1.8.7",
+    "dns-socket": "^3.0.0",
+    "electron": "^2.0.2",
     "electron-dl": "^1.12.0",
     "electron-edge-js": "^8.3.4",
     "electron-progressbar": "^1.0.2",
@@ -26,7 +27,9 @@
     "hasbin": "^1.2.3",
     "jquery": "^3.3.1",
     "loglevel": "^1.6.1",
+    "minimatch": "^3.0.4",
     "ncp": "^2.0.0",
+    "npm-shrinkwrap": "^6.1.0",
     "path": "^0.12.7",
     "ping-lite": "^1.0.2",
     "printer": "^0.2.2",
@@ -37,13 +40,15 @@
     "shelljs": "^0.8.2",
     "source-map-support": "^0.5.6",
     "tmp": "0.0.33",
-    "uglify-js": "^3.3.27",
+    "uglify-js": "^3.3.28",
     "unused-filename": "^1.0.0",
     "valid-url": "^1.0.9",
-    "validator": "^9.4.1",
+    "validator": "^10.2.0",
     "wurl": "^2.5.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "snyk": "^1.82.0"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/Servoy/electron.git"
