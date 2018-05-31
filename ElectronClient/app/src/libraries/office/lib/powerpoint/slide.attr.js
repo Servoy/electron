@@ -1,17 +1,17 @@
 var attributes = {
   /**
-    * Setzt die PowerPoint-Folie an die übergebene Name oder gibt den Namen einer PowerPoint-Folie aus, wenn der der Parameter 'name' nicht definiert wird.
+    * Sets the PowerPoint slide to the passed name or outputs the name of a PowerPoint slide if the parameter 'name' is not defined.
     * @method pos
     * @param {Number} pos
     * @chainable
     *
     * @example
-    * Gibt dName der Folie zurück und schreibt diese in die Variable 'slideName'.
+    * Returns the name of the slide and writes it to the variable 'slideName'.
     * @example
     *     var slideName = slide.name()
     *
     * @example
-    * Setzt den Folie Name.
+    * Sets the slide name.
     * @example
     *     slide.name('Slide Fu Bar')
     */
@@ -20,18 +20,18 @@ var attributes = {
   },
 
   /**
-  * Setzt die PowerPoint-Folie an die übergebene Position oder gibt die Position einer PowerPoint-Folie aus, wenn der der Parameter 'pos' nicht definiert wird.
+  * Sets the PowerPoint slide to the passed position or outputs the position of a PowerPoint slide if the pos parameter is not set.
   * @method pos
   * @param {Number} pos
   * @chainable
   *
   * @example
-  * Gibt die Position der Folie aus und schreibt diese in die Variable 'sildePos'.
+  * Returns the position of the slide and writes it to the variable 'sildePos'.
   * @example
   *     var slidePos = slide.pos()
   *
   * @example
-  * Schiebt die Folie an die dritte Stelle.
+  * Push the slide to the third place.
   * @example
   *     slide.pos(3)
   */
@@ -40,13 +40,13 @@ var attributes = {
   },
 
   /**
-  * Gibt die Nummer einer PowerPoint-Folie aus.
+  * Returns the number of a PowerPoint slide.
   * @method number
   * @chainable
   * @readonly
   *
   * @example
-  * Gibt die Nummer der Folie aus und schreibt diese in die Variable 'sildeNum'.
+  * Returns the number of the slide and writes it to the variable 'sildeNum'.
   * @example
   *     var slideNum = slide.number()
   */

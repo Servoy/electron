@@ -7,7 +7,6 @@ var attributes = {
     return this.attr('Count')
   },
 
-  // Font properties
   fontName: function (fontName) {
     return this.attr('Name', fontName, 'font')
   },
@@ -28,7 +27,7 @@ var attributes = {
     return this.attr('Bold', fontName, 'font')
   },
 
-  // Format properties
+  
   align: function (align) {
     return this.attr('Alignment', align, 'format')
   },
