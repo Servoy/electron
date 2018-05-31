@@ -101,6 +101,7 @@ ipcMain.on('print-file', function(event, file_object){
      printer.printFile(file_object);
 });
 
+// Reload the application from renderer process
 ipcMain.on('reload', function(event, _placeholder){
      reload();
 });
