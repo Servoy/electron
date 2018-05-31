@@ -1,4 +1,4 @@
 exclude_patterns:
 - "ElectronClient/lib/"
-- "ElectronClient/node_modules/"
 - "ElectronSample/"
+- "**/node_modules/"
