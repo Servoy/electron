@@ -1,17 +1,17 @@
 var attributes = {
   /**
-  * Setzt den Namen eines PowerPoint-Objekts auf den übergebenen Wert oder gibt den Namen des PowerPoint-Objekts zurück, wenn der Parameter 'name' nicht definiert ist.
+  * Sets the name of a PowerPoint object to the passed value or returns the name of the PowerPoint object if the parameter 'name' is not defined.
   * @method name
   * @param {String} name
   * @chainable
   *
   * @example
-  * Liest den Namen des PowerPoint-Objekts aus und schreibt diesen in die Variable 'shapeName'.
+  * Reads the name of the PowerPoint object and writes it in the variable 'shapeName'.
   * @example
   *     var shapeName = $shapes('selector').name();
   *
   * @example
-  * Ändert den Namen des PowerPoint-Objekts in 'Textbox_1337'.
+  * Changes the name of the PowerPoint object in 'Textbox_1337'.
   * @example
   *     $shapes('selector').name('Textbox_1337')
   */
@@ -20,18 +20,18 @@ var attributes = {
   },
 
   /**
-  * Setzt den Text eines PowerPoint-Objekts auf den übergebenen Wert oder gib den Text des PowerPoint-Objekts zurück, wenn der Parameter 'text' nicht definiert ist.
+  * Sets the text of a PowerPoint object to the passed value or returns the text of the PowerPoint object if the parameter 'text' is not defined.
   * @method text
   * @param {String} text
   * @chainable
   *
   * @example
-  * Liest den Text des PowerPoint-Objekts aus und schreibt diesen in die Variable 'shapeText'.
+  * Reads the text of the PowerPoint object and writes it in the variable 'shapeText'.
   * @example
   *     var shapeText = $shapes('selector').text()
   *
   * @example
-  * Setzt den Text des PowerPoint-Objekts auf 'Fu Bar'.
+  * Sets the text of the PowerPoint object 'Fu Bar'.
   * @example
   *     $shapes('selector').text('Fu Bar')
   */
@@ -40,18 +40,19 @@ var attributes = {
   },
 
   /**
-  * Setzt den Wert des Abstands nach oben eines PowerPoint-Objekts auf den übergebenen Wert oder gibt den Wert des Abstands nach oben des PowerPoint-Objekts zurück, wenn der Parameter 'top' nicht definiert ist.
+  *
+Sets the value of the distance to the top of a PowerPoint object to the passed value or returns the value of the distance to the top of the PowerPoint object, if the parameter 'top' is not defined.
   * @method top
   * @param {Number} top
   * @chainable
   *
   * @example
-  * Liest den Wert des Abstands nach oben des PowerPoint-Objekts aus und schreibt diesen in die Variable 'shapeTop'.
+  * Reads the Distance Up value of the PowerPoint object and writes it to the variable 'shapeTop'.
   * @example
   *     var shapeTop = $shapes('selector').top()
   *
   * @example
-  * Setzt den Wert des Abstands nach oben des PowerPoint-Objekts auf 1337.
+  * Sets the value of the distance upwards of the PowerPoint object 1337.
   * @example
   *     $shapes('selector').top(1337)
   */
@@ -60,18 +61,18 @@ var attributes = {
   },
 
   /**
-  * Setzt den Wert des Abstands nach links eines PowerPoint-Objekts auf den übergebenen Wert oder gibt den Wert des Abstands nach links des PowerPoint-Objekts zurück, wenn der Parameter 'left' nicht definiert ist.
+  * Sets the value of the distance to the left of a PowerPoint object to the passed value or returns the value of the distance to the left of the PowerPoint object if the parameter 'left' is not defined.
   * @method left
   * @param {Number} left
   * @chainable
   *
   * @example
-  * Liest den Wert des Abstands nach links des PowerPoint-Objekts aus und schreibt diesen in die Variable 'shapeLeft'.
+  * Reads the value of the distance to the left of the PowerPoint object and writes it to the variable 'shapeLeft'.
   * @example
   *     var shapeLeft = $shapes('selector').left()
   *
   * @example
-  * Setzt den Wert des Abstands nach links des PowerPoint-Objekts auf 1337.
+  * Sets the value of the distance to the left of the PowerPoint object 1337.
   * @example
   *     $shapes('selector').left(1337)
   */
@@ -80,18 +81,18 @@ var attributes = {
   },
 
   /**
-  * Setzt die Höhe eines PowerPoint-Objekts auf den übergebenen Wert oder gibt den Wert der Höhe des PowerPoint-Objekts zurück, wenn der Parameter 'height' nicht definiert ist.
+  * Sets the height of a PowerPoint object to the passed value, or returns the value of the height of the PowerPoint object if the height parameter is undefined.
   * @method height
   * @param {Number} height
   * @chainable
   *
   * @example
-  * Liest den Wert der Höhe des PowerPoint-Objekts aus und schreibt diesen in die Variable 'shapeHeight'.
+  * Reads the value of the height of the PowerPoint object and writes it in the variable 'shapeHeight'.
   * @example
   *     var shapeHeight = $shapes('selector').height()
   *
   * @example
-  * Setzt den Wert der Höhe des PowerPoint-Objekts auf 1337.
+  * Sets the value of the height of the PowerPoint object 1337.
   * @example
   *     $shapes('selector').height(1337)
   */
@@ -100,18 +101,18 @@ var attributes = {
   },
 
   /**
-  * Setzt die Breite eines PowerPoint-Objekts auf den übergebenen Wert oder gibt den Wert der Breite des PowerPoint-Objekts zurück, wenn der Parameter 'width' nicht definiert ist.
+  * Sets the width of a PowerPoint object to the passed value, or returns the value of the width of the PowerPoint object if the width parameter is undefined.
   * @method width
   * @param {Number} width
   * @chainable
   *
   * @example
-  * Liest den Wert der Breite des PowerPoint-Objekts aus und schreibt diesen in die Variable 'shapeWidth'.
+  * Reads the value of the width of the PowerPoint object and writes it in the variable 'shapeWidth'.
   * @example
   *     var shapeWidth = $shapes('selector').width()
   *
   * @example
-  * Setzt den Wert der Breite des PowerPoint-Objekts auf 1337.
+  * Sets the value of the width of the PowerPoint object 1337.
   * @example
   *     $shapes('selector').width(1337)
   */
@@ -120,18 +121,18 @@ var attributes = {
   },
 
   /**
-  * Rotiert ein PowerPoint-Objekt um den übergebenen Wert in Grad nach rechts oder gibt den Wert der Rotation eines PowerPoint-Objekts zurück, wenn der Parameter 'rotation' nicht definbiert ist.
+  * Rotates a PowerPoint object right by the passed value or returns the value of the rotation of a PowerPoint object if the 'rotation' parameter is not defined.
   * @method rotation
   * @param {Number} rotation
   * @chainable
   *
   * @example
-  * Liest den Wert der Rotation des PowerPoint-Objekts aus und schreibt diesen in die Variable 'shapeRotation'.
+  * Reads the value of the rotation of the PowerPoint object and writes it into the variable'shapeRotation'.
   * @example
   *     var shapeRotation = $shapes('selector').rotation()
   *
   * @example
-  * Dreht das PowerPoint-Objekt um 90 Grad nach rechts.
+  * Rotates the PowerPoint object 90 degrees to the right.
   * @example
   *     $shapes('selector').rotation(90)
   */
@@ -140,18 +141,19 @@ var attributes = {
   },
 
   /**
-  * Befüllt ein PowerPoint-Objekt mit der Farbe mit dem übergebenen Wert oder gibt den Wert der Farbe mit welcher das PowerPoint-Objekt gefüllt ist aus, wenn der Parameter 'fill' nicht definiert ist.
+  *
+Fills a PowerPoint object with the color with the passed value or returns the value of the color with which the PowerPoint object is filled if the parameter 'fill' is not defined.
   * @method fill
   * @param {Number} fill
   * @chainable
   *
   * @example
-  * Liest den Wert der Farbe des PowerPoint-Objekts aus und schreibt diesen in die Variable 'shapeColor'.
+  * Reads out the value of the color of the PowerPoint object and writes it to the variable 'shapeColor'.
   * @example
   *     var shapeColor = $shapes('selector').fill()
   *
   * @example
-  *  Befüllt das PowerPoint-Objekt mit der Farbe mit dem Wert '#FF9900'.
+  *  Fills the PowerPoint object with the color with the value '#FF9900'.
   * @example
   *     $shapes('selector').fill('FF9900')
   */
@@ -160,12 +162,12 @@ var attributes = {
   },
 
   /**
-  * Gibt den nächsten sog. 'Parent' (Elternteil, übergeordnetes Objekt) eines PowerPoint-Objekts zurück.
+  * Returns the next so-called 'parent' (parent, parent) of a PowerPoint object.
   * @method parent
   * @chainable
   *
   * @example
-  * Liest den Parent des PowerPoint-Objekts aus und schreibt diesen in die Variable 'shapeParent'.
+  * Reads the parent of the PowerPoint object and writes it to the variable 'shapeParent'.
   * @example
   *     var shapeParent = $shapes('selector').parent()
   */

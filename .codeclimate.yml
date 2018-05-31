@@ -2,3 +2,4 @@ exclude_patterns:
 - "ElectronClient/lib/"
 - "ElectronSample/"
 - "**/node_modules/"
+- "ElectonClient/app/src/libraries/office/"
