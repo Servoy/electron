@@ -28,7 +28,6 @@ function printText(object){
   });
 }
 
-
 function printFile(object){
   console.log('platform:', process.platform);
   console.log('try to print file: ' + object.filename);
@@ -61,7 +60,6 @@ function printPDF(object){
   util = require('util'),
   printerName = 'Foxit Reader PDF Printer',
   printerFormat = 'TEXT';
-
   printer.printDirect({
   data:object.data, // or simple String: "some text"
 	printer:object.printer, // printer name
@@ -72,28 +70,35 @@ function printPDF(object){
         'fit-to-page': object.fit
     },
 	success:function(jobID){
-		console.log("sent to printer with ID: "+jobID);
-    var jobInfo = printer.getJob(object.printer, jobID);
-    console.log("current job info:"+util.inspect(jobInfo, {depth: 10, colors:true}));
-    if(jobInfo.status.indexOf('PRINTED') !== -1)
-    {
-      console.log('too late, already printed');
-      return;
-      }
-      console.log('cancelling...');
-      var is_ok = printer.setJob(object.printer, jobID, 'CANCEL');
-		  console.log("cancelled: "+is_ok);
-		  try{
-			     console.log("current job info:"+util.inspect(printer.getJob(printerName, jobID), {depth: 10, colors:true}));
-		  }catch(err){
-			     console.log('job deleted. err:'+err);
-		  }
+		success();
 	},
 	error:function(err){
     console.log(err);
   }
 });
 }
+
+
+function successPDF(){
+  console.log("sent to printer with ID: "+jobID);
+  var jobInfo = printer.getJob(object.printer, jobID);
+  console.log("current job info:" + util.inspect(jobInfo, {depth: 10, colors:true}));
+  if(jobInfo.status.indexOf('PRINTED') !== -1)
+  {
+    console.log('too late, already printed');
+    return;
+    }
+    console.log('cancelling...');
+    var is_ok = printer.setJob(object.printer, jobID, 'CANCEL');
+    console.log("cancelled: "+is_ok);
+    try {
+         console.log("current job info:" + util.inspect(printer.getJob(printerName, jobID), {depth: 10, colors:true}));
+    } catch(err) {
+         console.log('job deleted. err:'+err);
+  }
+}
+
+
 
 /*
 * This function retrieves a list of all the connected printers

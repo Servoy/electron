@@ -30,51 +30,54 @@ function initPath(path){
 */
 function setDownloadListener(window){
   window.webContents.session.on('will-download', (event, item, webContents) => {
-      console.log("run");
 			checkPath();
 			totalBytes += item.getTotalBytes();
 			const filename = item.getFilename();
 			const name = path.extname(filename) ? filename :
 			getFilenameFromMime(filename, item.getMimeType());
 	    filePath = unusedFilename.sync(path.join(dir, name));
-
-
 			item.setSavePath(filePath);
-	    item.on('updated', () => {
-			receivedBytes = [...downloadItems].reduce((receivedBytes, item) => {
-					receivedBytes += item.getReceivedBytes();
-					console.log(receivedBytes);
-					return receivedBytes;
-			}, completedBytes);
-	    app.setBadgeCount(activeDownloadItems());
-	    window.setProgressBar(progressDownloadItems());
-			});
-
-			item.on('done', (e, state) => {
-				completedBytes += item.getTotalBytes();
-				downloadItems.delete(item);
-	      app.setBadgeCount(activeDownloadItems());
-				if (!window.isDestroyed() && !activeDownloadItems()) {
-					window.setProgressBar(-1);
-					receivedBytes = 0;
-					completedBytes = 0;
-					totalBytes = 0;
-				}
-				if (state === 'interrupted') {
-					const message = pupa(errorMessage, {filename: item.getFilename()});
-						dialog.showErrorBox(errorTitle, message);
-				} else if (state === 'completed') {
-	        console.log("finished");
-					if (process.platform === 'darwin') {
-						app.dock.downloadFinished(filePath);
-					}
-          const item_path = path.join(dir, item.getFilename());
-          console.log(item_path);
-					shell.showItemInFolder(item_path);
-          shell.openItem(item_path);
-				}
-			});
+      updated(item)
+      done(item);
   });
+  }
+
+  function updated(item){
+    item.on('updated', () => {
+      receivedBytes = [...downloadItems].reduce((receivedBytes, item) => {
+          receivedBytes += item.getReceivedBytes();
+          console.log(receivedBytes);
+          return receivedBytes;
+      }, completedBytes);
+      app.setBadgeCount(activeDownloadItems());
+	    window.setProgressBar(progressDownloadItems());
+		});
+  }
+
+  function done(item){
+    item.on('done', (e, state) => {
+      completedBytes += item.getTotalBytes();
+      downloadItems.delete(item);
+      app.setBadgeCount(activeDownloadItems());
+      if (!window.isDestroyed() && !activeDownloadItems()) {
+        window.setProgressBar(-1);
+        receivedBytes = 0;
+        completedBytes = 0;
+        totalBytes = 0;
+      }
+      if (state === 'interrupted') {
+        const message = pupa(errorMessage, {filename: item.getFilename()});
+          dialog.showErrorBox(errorTitle, message);
+      } else if (state === 'completed') {
+        console.log("finished");
+        if (process.platform === 'darwin') {
+          app.dock.downloadFinished(filePath);
+        }
+        const item_path = path.join(dir, item.getFilename());
+        shell.showItemInFolder(item_path);
+        shell.openItem(item_path);
+      }
+    });
   }
 
 	/**
