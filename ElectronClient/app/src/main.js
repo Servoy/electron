@@ -2,13 +2,17 @@ const communication = require('./components/communication');
 const mainWindow = require('./components/windows/mainWindow');
 const infoWindow = require('./components/windows/infoWindow');
 const networkManager = require('./components/managers/networkManager');
-const powerpointManager = require('./components/managers/office/powerpointManager');
+
 const {app, ipcMain, webContents} = require('electron');
 const printer = require('./components/printer/printer');
-const fs = require('fs');
 const path = require('path');
 const url = require('url');
+const fs = require('fs');
+const os = require('os');
 
+// if(os.platform() === 'win32') {
+//   const powerpointManager = require('./components/managers/office/powerpointManager');
+// }
 // Define the servoy.json file to get config options
 const config_file_path = path.join(__dirname, './config/', 'servoy.json');
 // const config_file_path = path.join(__dirname, './../config/', 'servoy.json');

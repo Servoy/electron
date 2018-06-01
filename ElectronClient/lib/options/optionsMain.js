@@ -41,7 +41,7 @@ module.exports = function (inpOptions) {
     flashPluginDir: inpOptions.flashPath || inpOptions.flash || null,
     diskCacheSize: inpOptions.diskCacheSize || null,
     inject: inpOptions.inject || null,
-    ignore: 'src',
+    ignore: null,
     fullScreen: inpOptions.fullScreen || false,
     maximize: inpOptions.maximize || false,
     hideWindowFrame: inpOptions.hideWindowFrame || false,

@@ -1,0 +1,26 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="OfficeScript/Startup.cs">
+    <Files>
+      <File FileName="OfficeScript/DocumentProperty.cs" Line="1" Column="1" />
+      <File FileName="OfficeScript/Report/Paragraph.cs" Line="1" Column="1" />
+      <File FileName="OfficeScript/Report/Font.cs" Line="1" Column="1" />
+      <File FileName="OfficeScript/Startup.cs" Line="13" Column="43" />
+      <File FileName="OfficeScript/packages.config" Line="1" Column="1" />
+      <File FileName="OfficeScript/OfficeScriptType.cs" Line="1" Column="1" />
+      <File FileName="OfficeScript/Report/Workbook.cs" Line="1" Column="1" />
+      <File FileName="OfficeScript/Report/WordTags.cs" Line="1" Column="1" />
+      <File FileName="OfficeScript/Report/Document.cs" Line="284" Column="48" />
+      <File FileName="OfficeScript/Report/Application.cs" Line="461" Column="75" />
+      <File FileName="OfficeScript/Properties/AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="OfficeScript/Util.cs" Line="1" Column="1" />
+      <File FileName="OfficeScript/Report/Slide.cs" Line="1" Column="1" />
+      <File FileName="OfficeScript/Report/Shape.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
