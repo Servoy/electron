@@ -3,3 +3,4 @@ exclude_patterns:
 - "ElectronSample/"
 - "**/node_modules/"
 - "ElectronClient/app/src/libraries/office/"
+- "windows/"
