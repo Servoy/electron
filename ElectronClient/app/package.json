@@ -24,7 +24,8 @@
     "pupa": "^1.0.0",
     "resolv": "^1.0.0",
     "uglify-js": "^3.3.28",
-    "unused-filename": "^1.0.0"
+    "unused-filename": "^1.0.0",
+    "node-gyp": "^3.6.2"
   },
   "devDependencies": {
     "snyk": "^1.82.0"

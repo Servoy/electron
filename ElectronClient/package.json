@@ -6,12 +6,12 @@
   "main": "app/src/main.js",
   "scripts": {
     "start": "electron .",
-    "rebuild": "electron-rebuild -f -w --target=1.8.4 ElectronClient",
+    "rebuild": "electron-rebuild -f -w --target=2.0.2 ElectronClient",
     "dev-up": "npm install && (cd ./app && npm install)",
     "dev-up-win": "npm install & cd app & npm install"
   },
   "bin": {
-    "servoy": "lib/cli.js"
+    "electron": "lib/cli.js"
   },
   "author": "Dion Haneveld",
   "license": "ISC",
@@ -23,7 +23,7 @@
     "commander": "^2.15.0",
     "copy": "^0.3.1",
     "dns-socket": "^1.6.1",
-    "electron": "^1.8.4",
+    "electron": "^2.0.2",
     "electron-edge-js": "^8.3.2",
     "electron-packager": "^11.1.0",
     "electron-progressbar": "^1.0.4",
@@ -36,6 +36,7 @@
     "jquery": "^3.3.1",
     "loglevel": "^1.6.1",
     "ncp": "^2.0.0",
+    "node-gyp": "^3.6.2",
     "office-script": "^1.4.0",
     "path": "^0.12.7",
     "ping-lite": "^1.0.2",

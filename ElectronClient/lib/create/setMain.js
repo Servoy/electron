@@ -15,6 +15,7 @@ const path = require('path');
 const tmp = require('tmp');
 const ncp = require('ncp');
 const copy = ncp.ncp;
+var progress = null;
 
 /**
  * Checks if the electron-packager was completed by checking if the path array
@@ -134,6 +135,14 @@ function checkWin32metadataOption(options) {
   return removeInvalidOptions(options, 'win32metadata');
 }
 
+function setProgress(platform){
+  if(platform !== 'windows'){
+    progress = new ProgressView(6);
+  } else {
+    progress = new ProgressView(5);
+  }
+}
+
 function checkElectronVersion(options){
     console.log(process.versions.electron);
 }
@@ -144,11 +153,11 @@ function checkElectronVersion(options){
  */
 function setMain(inputOptions, callback) {
   const options = Object.assign({}, inputOptions);
-
   // pre process app
   const tmpObj = tmp.dirSync({unsafeCleanup: true});
   const tmpPath = tmpObj.name;
-  const progress = new ProgressView(6);
+  setProgress(inputOptions.platform);
+  console.log(progress);
   async.waterfall([
     (cb) => {
       progress.tick('interpretation process');
@@ -165,13 +174,16 @@ function setMain(inputOptions, callback) {
         if (error) {
           cb(error);
           return;
-        }
+        } else {
         // Change the reference file for the Electron app to be the temporary path
+        console.log("application succesfully copied");
         const newOptions = Object.assign({}, opts, { dir: tmpPath });
         cb(null, newOptions);
+      }
       });
     },
     (opts, cb) => {
+      if(inputOptions.platform !== 'windows') {
       progress.tick('rebuilding modules');
       const rebuildOptions = {
         electronVersion: opts.electronVersion,
@@ -180,15 +192,19 @@ function setMain(inputOptions, callback) {
         onlyModules: ['printer', 'serialport'],
         headerURL: "https://atom.io/download/atom-shell"
       }
+
       rebuild(rebuildOptions)
       .then(() => {
-        console.info('Rebuild Successful')
+        console.info('modules succesfully rebuilded')
         cb(null, opts);
       })
       .catch((e) => {
-        console.error("Building modules didn't work!");
+        console.error("building modules didn't work!");
         console.error(e);
       });
+    } else {
+        cb(null, opts);
+    }
     },
     (opts, cb) => {
       progress.tick('setting icons');
@@ -197,7 +213,7 @@ function setMain(inputOptions, callback) {
       });
     },
     (opts, cb) => {
-      progress.tick('packaging app');
+      progress.tick('packaging application');
       // skip passing icon parameter to electron packager if needed
       let packageOptions = checkIconOption(opts);
       // skip passing other parameters to electron packager if needed
@@ -207,10 +223,14 @@ function setMain(inputOptions, callback) {
       packageOptions = checkVersionStringOption(packageOptions);
       packageOptions = checkWin32metadataOption(packageOptions);
       packager(packageOptions,  (error, appPathArray) => {
+        if(error) {
+          cb(error);
+          return;
+        }
+        console.log("application succesfully packaged");
         cb(error, opts, appPathArray);
       });
     },
-
     (opts, appPathArray, cb) => {
       progress.tick('finalizing app');
       const appPath = getAppPath(appPathArray);
@@ -221,7 +241,7 @@ function setMain(inputOptions, callback) {
       checkCopyIcons(opts, appPath, (error) => {
         cb(error, appPath);
       });
-
+      console.log("application ready!");
     },
   ], (error, appPath) => {
     callback(error, appPath);

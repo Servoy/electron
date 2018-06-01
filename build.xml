@@ -1,0 +1,87 @@
+<project name="RunElectron">
+<property name="name" value="--name electronsample" />
+<property name="platform" value="--platform windows" />
+<property name="arch" value="--arch=x64" />
+<property name="url" value=" http://145.101.25.233:8080/solutions/ElectronSample/index.html?f=Main" />
+<property name="cli-command" value="node cli.js ${name} ${platform} ${url}" />
+<condition property="isWindows">
+    <equals arg1="${platform}" arg2="--platform windows"/>
+</condition>
+<condition property="isMac">
+    <equals arg1="${platform}" arg2="--platform darwin"/>
+</condition>
+<condition property="isLinux">
+    <equals arg1="${platform}" arg2="--platform linux"/>
+</condition>
+
+<target name="run.electron">
+  <antcall target="run.electron.init"/>
+  <antcall target="run.electron.cli"/>
+  <antcall target="run.electron.clean"/>
+</target>
+
+<target name= "run.electron.init">
+  <antcall target="run.electron.windows"/>
+  <antcall target="run.electron.mac"/>
+  <antcall target="run.electron.linux"/>
+</target>
+
+<target name="run.electron.windows" if="isWindows">
+    <echo message="Windows Target" />
+    <copy todir="ElectronClient" >
+      <fileset dir="windows" includes="node_modules/**"/>
+    </copy>
+    <copy todir="ElectronClient" >
+      <fileset dir="windows" includes="package-lock.json"/>
+    </copy>
+    <copy todir="ElectronClient/app" >
+      <fileset dir="windows/app" includes="node_modules/**"/>
+    </copy>
+    <copy todir="ElectronClient/app">
+      <fileset dir="windows/app" includes="package-lock.json"/>
+    </copy>
+    <copy todir="ElectronClient/app/src/libraries" >
+      <fileset dir="windows" includes="office-library/**"/>
+    </copy>
+    <copy todir="ElectronClient/app/src/components" >
+      <fileset dir="windows" includes="managers/**"/>
+    </copy>
+</target>
+
+<target name="run.electron.mac" if="isMac">
+    <echo message="Mac Target" />
+    <antcall target="run.electron.install"/>
+</target>
+
+<target name="run.electron.linux" if="isLinux">
+    <echo message="Linux Target" />
+    <antcall target="run.electron.install"/>
+</target>
+
+<target name="run.electron.install">
+   <echo>NPM install</echo>
+	  <exec dir="ElectronClient/app" executable="/bin/sh">
+	     <arg value="-c"/>
+       <arg value="npm install"/>
+	</exec>
+</target>
+
+<target name="run.electron.cli">
+   <echo>Running Command Line Inteface to create executable</echo>
+	  <exec dir="ElectronClient/lib" executable="/bin/sh">
+	     <arg value="-c"/>
+       <arg value="${cli-command}"/>
+	</exec>
+</target>
+
+<target name="run.electron.clean">
+  <echo>Clean</echo>
+  <exec dir="ElectronClient" executable="/bin/sh">
+     <arg value="-c"/>
+     <arg value="rm -r node_modules"/>
+     <arg value="rm -r app/node_modules"/>
+     <arg value="rm -f app/src/components/managers/office"/>
+     <arg value="rm -f app/src/libraries/office-library"/>
+</exec>
+</target>
+</project>

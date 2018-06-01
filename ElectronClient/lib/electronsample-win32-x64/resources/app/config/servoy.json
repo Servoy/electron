@@ -1,0 +1,1 @@
+{"injectScripts":{},"options":{"title":"Electron Client","width":1000,"height":800,"frame":false,"icon":"app/resources/icons/img_543467.png","url":"http://145.101.25.233:8080/solutions/ElectronSample/index.html?f=Main","resizable":true,"show":false,"webPreferences":{"javascript":true,"plugins":true,"nodeIntegration":true}}}

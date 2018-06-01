@@ -3,7 +3,7 @@
 
 const packageJson = require('./../package');
 const program = require('commander');
-const servoy = require('./index');
+const electron = require('./index');
 const log = require('loglevel');
 const dns = require('dns');
 
@@ -93,7 +93,7 @@ if (require.main === module) {
     program.help();
   }
   checkInternet();
-  servoy(program, (error, appPath) => {
+  electron(program, (error, appPath) => {
     if (error) {
       log.error(error);
       return;
