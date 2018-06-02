@@ -20,6 +20,16 @@ Make sure you have Node.js, Python 2.x, installed on your system. Windows users 
 
 [Visual Studio](https://www.visualstudio.com/vs/)
 
+#### Packaging the executable
+
+The process of creating an executable is done with [Apache Ant](https://ant.apache.org/manual/install.html). For MacOS I recommend installing Apache Ant with [Homebrew](https://brew.sh/index_nl).
+
+This project consists of a build.xml file where you can edit the settings of creating the executable. To execute the process, run the following command in your command prompt or terminal: 
+
+```console
+ant run.electron
+```
+
 **For further development of Microsoft Office integration**
 
 Please send an email to [dhaneveld@servoy.com](mailto:dhaneveld@servoy.com) to get the .NET project.
