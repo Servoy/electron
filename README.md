@@ -12,6 +12,7 @@ This client is made for the possibility of using the NG-Client with access to th
 
 - [Setup](#Setup)    
 <a name="Setup"/>
+
 [Prerequisites](#Prerequisites)    
 <a name="Prerequisites"/>
 
