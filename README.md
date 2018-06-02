@@ -10,10 +10,10 @@ This client is made for the possibility of using the NG-Client with access to th
 
 ## Table of contents
 
-[Setup](#Setup)    
+- [Setup](#Setup)    
 <a name="Setup"/>
-	[Prerequisites](#Prerequisites)    
-	<a name="Prerequisites"/>
+[Prerequisites](#Prerequisites)    
+<a name="Prerequisites"/>
 
 ## Setup
 
