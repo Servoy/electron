@@ -31,6 +31,8 @@ Please send an email to [dhaneveld@servoy.com](mailto:dhaneveld@servoy.com) to g
 
 ### Creating the executable
 
+For creating an executable on your local machine for local development you have to do the following:
+
 #### Apache Ant
 
 The process of creating an executable is done with [Apache Ant](https://ant.apache.org/manual/install.html). For MacOS I recommend installing Apache Ant with [Homebrew](https://brew.sh/index_nl).
