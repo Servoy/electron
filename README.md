@@ -8,7 +8,7 @@ This client is made for the possibility of using the NG-Client with access to th
 
 # Setup
 
-What things you need to install to further develop this client.
+The setup for further development of the Servoy Electron Client
 
 ## Prerequisites
 
@@ -17,9 +17,6 @@ What things you need to install to further develop this client.
 **For further development of Microsoft Office integration**
 
 [Visual Studio](https://www.visualstudio.com/vs/)
-
-
-
 
 Please send an email to [dhaneveld@servoy.com](mailto:dhaneveld@servoy.com) to get the .NET project.
 
