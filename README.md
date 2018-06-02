@@ -52,6 +52,10 @@ To load in your solution made with the Servoy Developer there are several things
 
    - Replace the value of the property url with the url of your application
    - Example: http://192.168.43.197:8080/solutions/ElectronSample/index.html?f=Main
+   
+3. Don't have a solution or electron web package? 
+
+   - import the ServoyExample and the electron web package from this repository.
 
 #### Changing app icon
 
