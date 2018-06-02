@@ -12,12 +12,14 @@ This client is made for the possibility of using the NG-Client with access to th
 
 [Setup](#Setup)    
 <a name="Setup"/>
+	[Prerequisites](#Prerequisites)    
+	<a name="Prerequisites"/>
 
 ## Setup
 
 The setup for further local development of the Servoy Electron Client.
 
-## Prerequisites
+### Prerequisites
 
 Make sure you have Node.js, Python 2.x, installed on your system. Windows users will also require Visual Studio
 
