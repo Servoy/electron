@@ -30,9 +30,17 @@ This project consists of an build.xml file where you can edit the settings of cr
 ant run.electron
 ```
 
-**For further development of Microsoft Office integration**
+#### For further development of Microsoft Office integration
 
-Please send an email to [dhaneveld@servoy.com](mailto:dhaneveld@servoy.com) to get the .NET project.
+Please send an email to [dhaneveld@servoy.com](mailto:dhaneveld@servoy.com) to get the .NET project and information on how you can further improve it.
+
+
+
+
+
+
+
+
 
 
 
