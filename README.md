@@ -29,7 +29,7 @@ This project consists of an build.xml file where you can edit the settings of cr
 ```console
 ant run.electron
 ```
-#### changing icon
+#### Changing app icon
 
 If you wish to change the icon for your local development installation you have to do the following:
 
