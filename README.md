@@ -15,7 +15,9 @@ The setup for further development of the Servoy Electron Client
 Make sure you have Node.js, Python 2.x, installed on your system. Windows users will also require Visual Studio
 
 [Python](https://www.python.org/downloads/) 
+
 [Node.js](https://nodejs.org/en/) >= 7
+
 [Visual Studio](https://www.visualstudio.com/vs/)
 
 **For further development of Microsoft Office integration**
