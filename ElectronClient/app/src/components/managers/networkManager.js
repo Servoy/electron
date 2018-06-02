@@ -56,7 +56,19 @@ const networkStatus = (options) => {
   return latencies;
 };
 
+function startNetworkManager(){
+  const time = minToMs(1);
+  networkStatus({
+    timeoutMs: time,
+    intervalMs: time,
+    hostname: 'google.com',
+    address: '8.8.8.8'
+  }).on('latencies', ({dns, ping}) => {
+    console.log('ping: ' + ping);
+    console.log('dns: ' + dns);
+  });
+};
+
 module.exports = {
-  networkStatus,
-  minToMs
+  startNetworkManager
 }

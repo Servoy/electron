@@ -1,8 +1,8 @@
 <project name="RunElectron">
 <property name="name" value="--name electronsample" />
-<property name="platform" value="--platform windows" />
+<property name="platform" value="--platform darwin" />
 <property name="arch" value="--arch=x64" />
-<property name="url" value=" http://145.101.25.233:8080/solutions/ElectronSample/index.html?f=Main" />
+<property name="url" value=" http://192.168.43.197:8080/solutions/ElectronSample/index.html?f=Main" />
 <property name="cli-command" value="node cli.js ${name} ${platform} ${url}" />
 <condition property="isWindows">
     <equals arg1="${platform}" arg2="--platform windows"/>
@@ -64,6 +64,10 @@
 	     <arg value="-c"/>
        <arg value="npm install"/>
 	</exec>
+   <exec dir="ElectronClient" executable="/bin/sh">
+       <arg value="-c"/>
+       <arg value="npm install"/>
+  </exec>
 </target>
 
 <target name="run.electron.cli">

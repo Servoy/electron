@@ -3,6 +3,24 @@ const {dialog} = require('electron');
 const printer = require('printer');
 
 
+function initIPC(ipcMain){
+
+// Wait for the print-file event
+ipcMain.on('print-file', function(event, file_object){
+    printer.printFile(file_object);
+});
+
+// Wait for the selected_printer event
+ipcMain.on('selected-printer', function(event, printer_object) {
+     printer.printText(printer_object);
+});
+
+// Wait for the get-printers event
+ipcMain.on('get-printers', function(event, _placeholder){
+    event.sender.send('printer-list', printer.getPrinters());
+});
+}
+
 /**
 * This function prints text to a printer
 * @param {JSON Object}
@@ -98,8 +116,6 @@ function successPDF(){
   }
 }
 
-
-
 /*
 * This function retrieves a list of all the connected printers
 */
@@ -109,6 +125,5 @@ function getPrinters(){
 }
 
 module.exports = {
-  printText,
-  getPrinters
+  initIPC
 }

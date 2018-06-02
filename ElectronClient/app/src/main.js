@@ -2,7 +2,6 @@ const communication = require('./components/communication');
 const mainWindow = require('./components/windows/mainWindow');
 const infoWindow = require('./components/windows/infoWindow');
 const networkManager = require('./components/managers/networkManager');
-
 const {app, ipcMain, webContents} = require('electron');
 const printer = require('./components/printer/printer');
 const path = require('path');
@@ -38,52 +37,17 @@ function create(){
 }
 
 /*
-* Call the networkManager to see what the network status is. This is handled
-* to log the internet speed of the end user.
+* Set global variables
 */
-function setNetworkEvent(){
-  const time = networkManager.minToMs(1);
-  networkManager.networkStatus({
-    timeoutMs: time,
-    intervalMs: time,
-    hostname: 'google.com',
-    address: '8.8.8.8'
-  }).on('latencies', ({dns, ping}) => {
-    console.log('ping: ' + ping);
-    console.log('dns: ' + dns);
-  });
-};
-
-/*
-* Initialise the global variables and the browser window with config options
-* Show the openDevTools for debugging
-* createWindow function from components/browserWindow.js
-*/
-function init(){
-    global.url = config.options.url;
-    global.title = config.options.title;
-    global.internet = internet_template;
-    // var presentation_path = path.join(app.getPath('desktop'), 'it_applied_engineering_presentation_dion_haneveld_lifi.pptx');
-    // powerpointManager.open(presentation_path);
-    create();
+function setGlobals(){
+  global.url = config.options.url;
+  global.title = config.options.title;
+  global.internet = internet_template;
 }
-
-/*
-* Reload the application when there is a problem
-*/
-function reload(){
-  window = null;
-  init();
-};
 
 // Wait for the path_specified event
 ipcMain.on('path_specified', function(event, file_path) {
     communication.initPath(file_path);
-});
-
-// Wait for the selected_printer event
-ipcMain.on('selected-printer', function(event, printer_object) {
-     printer.printText(printer_object);
 });
 
 // Wait for the selected_printer event
@@ -93,16 +57,6 @@ ipcMain.on('get-url', function(event, _placeholder) {
 
 ipcMain.on('no-internet', function(event, _placeholder) {
      internetWindow = infoWindow.createWindow("Internet");
-});
-
-// Wait for the get-printers event
-ipcMain.on('get-printers', function(event, _placeholder){
-    event.sender.send('printer-list', printer.getPrinters());
-});
-
-// Wait for the print-file event
-ipcMain.on('print-file', function(event, file_object){
-     printer.printFile(file_object);
 });
 
 // Reload the application from renderer process
@@ -117,8 +71,29 @@ app.on('window-all-closed', () => {
     }
 });
 
+/*
+* Initialise the global variables and the browser window with config options
+* Show the openDevTools for debugging
+* createWindow function from components/browserWindow.js
+*/
+function init(){
+    setGlobals();
+    networkManager.startNetworkManager();
+    printer.initIPC(ipcMain);
+    create();
+    // var presentation_path = path.join(app.getPath('desktop'), 'it_applied_engineering_presentation_dion_haneveld_lifi.pptx');
+    // powerpointManager.open(presentation_path);
+}
+
 // When the app is ready call the init function and call setNetworkEvent
 app.on('ready', function() {
   init();
-  setNetworkEvent();
 });
+
+/*
+* Reload the application when there is a problem
+*/
+function reload(){
+  window = null;
+  init();
+};

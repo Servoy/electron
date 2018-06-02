@@ -153,11 +153,11 @@ function checkElectronVersion(options){
  */
 function setMain(inputOptions, callback) {
   const options = Object.assign({}, inputOptions);
+  console.log(inputOptions);
   // pre process app
   const tmpObj = tmp.dirSync({unsafeCleanup: true});
   const tmpPath = tmpObj.name;
   setProgress(inputOptions.platform);
-  console.log(progress);
   async.waterfall([
     (cb) => {
       progress.tick('interpretation process');
