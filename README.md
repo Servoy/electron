@@ -8,6 +8,11 @@ This client is made for the possibility of using the NG-Client with access to th
 
 <a href="url"><img src="https://raw.githubusercontent.com/wiki/DionDavid/electron/images/home.jpg" height="400" width="650" ></a>
 
+## Table of contents
+
+[Setup](#Setup)    
+<a name="Setup"/>
+
 ## Setup
 
 The setup for further local development of the Servoy Electron Client.
