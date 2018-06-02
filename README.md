@@ -20,6 +20,8 @@ Make sure you have Node.js, Python 2.x, installed on your system. Windows users 
 
 [Visual Studio](https://www.visualstudio.com/vs/)
 
+## Usage
+
 #### Packaging the executable
 
 The process of creating an executable is done with [Apache Ant](https://ant.apache.org/manual/install.html). For MacOS I recommend installing Apache Ant with [Homebrew](https://brew.sh/index_nl).
