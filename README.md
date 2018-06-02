@@ -6,6 +6,8 @@ All the badges are tested against app inside the ElectronClient
 
 This client is made for the possibility of using the NG-Client with access to the local functionalities of the operating system.
 
+<a href="url"><img src="https://raw.githubusercontent.com/wiki/DionDavid/electron/images/home.jpg" height="400" width="650" ></a>
+
 # Setup
 
 The setup for further development of the Servoy Electron Client
