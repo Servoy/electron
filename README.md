@@ -20,6 +20,10 @@ Make sure you have Node.js, Python 2.x, installed on your system. Windows users 
 
 [Visual Studio](https://www.visualstudio.com/vs/)
 
+#### For further development of Microsoft Office integration
+
+Please send an email to [dhaneveld@servoy.com](mailto:dhaneveld@servoy.com) to get the .NET project and information on how you can further improve it.
+
 ## Usage
 
 #### Packaging the executable
@@ -38,9 +42,7 @@ If you wish to change the icon for your local development installation you have 
 1. Navigate to electron/ElectronClient/app/resources/icons/ | add your icon here.
 2. Navigate to electron/ElectronClient/app/config/servoy.json | replace with the name of your icon
 
-#### For further development of Microsoft Office integration
 
-Please send an email to [dhaneveld@servoy.com](mailto:dhaneveld@servoy.com) to get the .NET project and information on how you can further improve it.
 
 
 
