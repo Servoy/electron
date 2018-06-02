@@ -8,13 +8,19 @@ This client is made for the possibility of using the NG-Client with access to th
 
 <a href="url"><img src="https://raw.githubusercontent.com/wiki/DionDavid/electron/images/home.jpg" height="400" width="650" ></a>
 
-## Table of contents
+## Table of Contents 
 
-- [Setup](#Setup)    
-<a name="Setup"/>
-
-[Prerequisites](#Prerequisites)    
-<a name="Prerequisites"/>
+  - [Setup](#setup)
+    - [Prerequisites](#prerequisites)
+      - [For further development of Microsoft Office integration](#for-further-development-of-microsoft-office-integration)
+  - [Usage](#usage)
+    - [Creating the executable](#creating-the-executable)
+      - [Apache Ant](#apache-ant)
+      - [Loading your solution](#loading-your-solution)
+      - [Changing app icon](#changing-app-icon)
+      - [packaging the application](#packaging-the-application)
+      - [How is the packaging done?](#how-is-the-packaging-done)
+  - [How to create features for the Servoy Electron Client?](#how-to-create-features-for-the-servoy-electron-client)
 
 ## Setup
 
