@@ -57,8 +57,8 @@ To load in your solution made with the Servoy Developer there are several things
 
 If you wish to change the icon for your local development installation you have to do the following:
 
-  - Navigate to electron/ElectronClient/app/resources/icons/ | add your icon here.
-  - Navigate to electron/ElectronClient/app/config/servoy.json | replace with the name of your icon
+  - Navigate to **electron/ElectronClient/app/resources/icons/** | add your icon here.
+  - Navigate to **electron/ElectronClient/app/config/servoy.json** | replace with the name of your icon
 
 #### packaging the application
 
@@ -77,13 +77,9 @@ ant run.electron
 
 To package the application a CLI program is included inside the ElectronClient. 
 
-It resides inside electron/ElectronClient/lib and has the following architecture:
+It resides inside **electron/ElectronClient/lib** and has the following architecture:
 
-
-
-
-
-
+<a href="url"><img src="https://raw.githubusercontent.com/wiki/DionDavid/electron/images/architecture.jpg" height="400" width="650" ></a>
 
 
 
