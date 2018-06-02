@@ -8,9 +8,9 @@ This client is made for the possibility of using the NG-Client with access to th
 
 <a href="url"><img src="https://raw.githubusercontent.com/wiki/DionDavid/electron/images/home.jpg" height="400" width="650" ></a>
 
-# Setup
+## Setup
 
-The setup for further development of the Servoy Electron Client
+The setup for further local development of the Servoy Electron Client.
 
 ## Prerequisites
 
@@ -22,31 +22,72 @@ Make sure you have Node.js, Python 2.x, installed on your system. Windows users 
 
 [Visual Studio](https://www.visualstudio.com/vs/)
 
+
 #### For further development of Microsoft Office integration
 
 Please send an email to [dhaneveld@servoy.com](mailto:dhaneveld@servoy.com) to get the .NET project and information on how you can further improve it.
 
 ## Usage
 
-#### Packaging the executable
+### Creating the executable
+
+#### Apache Ant
 
 The process of creating an executable is done with [Apache Ant](https://ant.apache.org/manual/install.html). For MacOS I recommend installing Apache Ant with [Homebrew](https://brew.sh/index_nl).
 
-This project consists of an build.xml file where you can edit the settings of creating an executable. To execute the process, run the following command in your command prompt or terminal: 
+This project consists of an build.xml file where you can edit the settings of creating an executable. 
 
-```console
-ant run.electron
-```
+#### Loading your solution
+
+To load in your solution made with the Servoy Developer there are several things to do:
+
+1. Check your local IP address
+
+   - On Windows open up a command prompt and type **ipconfig**.
+   - On Mac and Linux open up a terminal and type **ifconfig**.
+
+2. Now head over to the build.xml 
+
+   - Replace the value of the property url with the url of your application
+   - Example: http://192.168.43.197:8080/solutions/ElectronSample/index.html?f=Main
+
 #### Changing app icon
 
 If you wish to change the icon for your local development installation you have to do the following:
 
-1. Navigate to electron/ElectronClient/app/resources/icons/ | add your icon here.
-2. Navigate to electron/ElectronClient/app/config/servoy.json | replace with the name of your icon
+  - Navigate to electron/ElectronClient/app/resources/icons/ | add your icon here.
+  - Navigate to electron/ElectronClient/app/config/servoy.json | replace with the name of your icon
+
+#### packaging the application
+
+First you can choose for what platform and arch type you want to create your application.
+Navigate to the build.xml and do the following:
+
+   - Replace the value of the property platform with the following options: --platform windows, --platform darwin, --platform linux
+   - Replace the value of the property arch with the following options: --arch=x64, --arch=ia32
+
+run the following command in your command prompt or terminal to package the application: 
+
+```console
+ant run.electron
+```
+#### How is the packaging done?
+
+To package the application a CLI program is included inside the ElectronClient. 
+
+It resides inside electron/ElectronClient/lib and has the following architecture:
 
 
 
 
+
+
+
+
+
+## How to create features for the Servoy Electron Client?
+
+To create new features for the Client there is a tutorial on explaining how you can do this
 
 
 
