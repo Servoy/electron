@@ -99,10 +99,11 @@ It resides inside **electron/ElectronClient/lib** and has the following architec
 <a href="url"><img src="https://raw.githubusercontent.com/wiki/DionDavid/electron/images/architecture.jpg" height="400" width="650" ></a>
 
 
+## Creation of features
 
-## How to create features for the Servoy Electron Client?
+To create new features for the Client there is a tutorial on explaining how you can do this. You can find the tutorial inside the wiki with the following link:
 
-To create new features for the Client there is a tutorial on explaining how you can do this
+[Creating-features-for-the-Servoy-Electron-Client](https://github.com/DionDavid/electron/wiki/Creating-features-for-the-Servoy-Electron-Client) 
 
 
 
