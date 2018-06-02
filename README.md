@@ -29,10 +29,18 @@ This project consists of an build.xml file where you can edit the settings of cr
 ```console
 ant run.electron
 ```
+#### changing icon
+
+If you wish to change the icon for your local development installation you have to do the following:
+
+1. Navigate to electron/ElectronClient/app/resources/icons/ | add your icon here.
+2. Navigate to electron/ElectronClient/app/config/servoy.json | replace with the name of your icon
 
 #### For further development of Microsoft Office integration
 
 Please send an email to [dhaneveld@servoy.com](mailto:dhaneveld@servoy.com) to get the .NET project and information on how you can further improve it.
+
+
 
 
 
