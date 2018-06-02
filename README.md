@@ -24,7 +24,7 @@ Make sure you have Node.js, Python 2.x, installed on your system. Windows users 
 
 The process of creating an executable is done with [Apache Ant](https://ant.apache.org/manual/install.html). For MacOS I recommend installing Apache Ant with [Homebrew](https://brew.sh/index_nl).
 
-This project consists of a build.xml file where you can edit the settings of creating the executable. To execute the process, run the following command in your command prompt or terminal: 
+This project consists of an build.xml file where you can edit the settings of creating an executable. To execute the process, run the following command in your command prompt or terminal: 
 
 ```console
 ant run.electron
