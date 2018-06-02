@@ -12,7 +12,6 @@ This client is made for the possibility of using the NG-Client with access to th
 
   - [Setup](#setup)
     - [Prerequisites](#prerequisites)
-      - [For further development of Microsoft Office integration](#for-further-development-of-microsoft-office-integration)
   - [Usage](#usage)
     - [Creating the executable](#creating-the-executable)
       - [Apache Ant](#apache-ant)
