@@ -42,6 +42,10 @@ Please send an email to [dhaneveld@servoy.com](mailto:dhaneveld@servoy.com) to g
 
 ## Usage
 
+### Built With
+
+Node.js, JavaScript and .NET
+
 ### Creating the executable
 
 For creating an executable on your local machine for local development you have to do the following:
