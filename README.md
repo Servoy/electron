@@ -109,6 +109,8 @@ To create new features for the Client there is a tutorial on explaining how you 
 
 [Creating-features-for-the-Servoy-Electron-Client](https://github.com/DionDavid/electron/wiki/Creating-features-for-the-Servoy-Electron-Client) 
 
+Furthermore, to get a clear understanding of how the processes in Electron work, you can look up the other pages inside the wiki.
+
 
 
 
