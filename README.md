@@ -20,6 +20,7 @@ This client is made for the possibility of using the NG-Client with access to th
       - [packaging the application](#packaging-the-application)
       - [How is the packaging done?](#how-is-the-packaging-done)
   - [Creation of features](#creation-of-features)
+  - [License](#license)
 
 ## Setup
 
