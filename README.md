@@ -109,7 +109,7 @@ It resides inside **electron/ElectronClient/lib** and has the following architec
 
 To create new features for the Client there is a tutorial on explaining how you can do this. You can find the tutorial inside the wiki with the following link:
 
-[Creating-features-for-the-Servoy-Electron-Client](https://github.com/DionDavid/electron/wiki/Creating-features-for-the-Servoy-Electron-Client) 
+[Creating features for the Servoy Electron Client](https://github.com/DionDavid/electron/wiki/Creating-features-for-the-Servoy-Electron-Client) 
 
 Furthermore, to get a clear understanding of how the processes in Electron work, you can look up the other pages inside the wiki.
 
