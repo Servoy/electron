@@ -1,14 +1,21 @@
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues) [![Known Vulnerabilities](https://snyk.io/test/github/DionDavid/electron/badge.svg?targetFile=ElectronClient/app/package.json)](https://snyk.io/test/github/DionDavid/electron) [![Maintainability](https://api.codeclimate.com/v1/badges/482ffb25e5b4c5bc17f8/maintainability)](https://codeclimate.com/github/DionDavid/electron/maintainability) [![dependencies Status](https://david-dm.org/DionDavid/electron/status.svg?path=ElectronClient/app)](https://david-dm.org/DionDavid/electron?path=ElectronClient/app) 
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues) [![Known Vulnerabilities](https://snyk.io/test/github/DionDavid/electron/badge.svg?targetFile=ElectronClient/app/package.json)](https://snyk.io/test/github/DionDavid/electron) [![Maintainability](https://api.codeclimate.com/v1/badges/482ffb25e5b4c5bc17f8/maintainability)](https://codeclimate.com/github/DionDavid/electron/maintainability) [![dependencies Status](https://david-dm.org/DionDavid/electron/status.svg?path=ElectronClient/app)](https://david-dm.org/DionDavid/electron?path=ElectronClient/app)
 
 All the badges are tested against app inside the ElectronClient
 
 # Electron Client for Servoy
 
-This client is made for the possibility of using the NG-Client with access to the local functionalities of the operating system.
+This client is made as replacement of the Servoy Smart Client.
+
+Two issues with the Servoy Smart Client:
+
+1.	The Smart Client is based on Java Swing technology, which does not provide the features to build a modern UI/UX.
+2.	The Smart Client relies on Java, this dependency causes maintenance work, especially around code signing and security caused by new Java releases.
+
+Therefore, the Servoy Electron Client has a modern UI/UX and has the the possibility of using the Servoy NG-Client with access to the local functionalities of the operating system.
 
 <a href="url"><img src="https://raw.githubusercontent.com/wiki/DionDavid/electron/images/home.jpg" height="400" width="650" ></a>
 
-## Table of Contents 
+## Table of Contents
 
   - [Setup](#setup)
     - [Prerequisites](#prerequisites)
@@ -29,7 +36,7 @@ The setup for further local development of the Servoy Electron Client.
 
 Make sure you have Node.js, Python 2.x and the Servoy Developer installed on your system. Windows users will also require Visual Studio
 
-[Python](https://www.python.org/downloads/) 
+[Python](https://www.python.org/downloads/)
 
 [Node.js](https://nodejs.org/en/) >= 7
 
@@ -56,7 +63,7 @@ For creating an executable on your local machine for local development you have 
 
 The process of creating an executable is done with [Apache Ant](https://ant.apache.org/manual/install.html). For MacOS I recommend installing Apache Ant with [Homebrew](https://brew.sh/index_nl).
 
-This project consists of an build.xml file where you can edit the settings of creating an executable. 
+This project consists of an build.xml file where you can edit the settings of creating an executable.
 
 #### Loading your solution
 
@@ -67,12 +74,12 @@ To load in your solution made with the Servoy Developer there are several things
    - On Windows open up a command prompt and type **ipconfig**.
    - On Mac and Linux open up a terminal and type **ifconfig**.
 
-2. Now head over to the build.xml 
+2. Now head over to the build.xml
 
    - Replace the value of the property url with the url of your application
    - Example: http://192.168.43.197:8080/solutions/ElectronSample/index.html?f=Main
-   
-3. Don't have a solution or electron web package? 
+
+3. Don't have a solution or electron web package?
 
    - import the ServoyExample and the electron web package from this repository.
 
@@ -91,14 +98,14 @@ Navigate to the build.xml and do the following:
    - Replace the value of the property platform with the following options: --platform windows, --platform darwin, --platform linux
    - Replace the value of the property arch with the following options: --arch=x64, --arch=ia32
 
-run the following command in your command prompt or terminal to package the application: 
+run the following command in your command prompt or terminal to package the application:
 
 ```console
 ant run.electron
 ```
 #### How is the packaging done?
 
-To package the application a CLI program is included inside the ElectronClient. 
+To package the application a CLI program is included inside the ElectronClient.
 
 It resides inside **electron/ElectronClient/lib** and has the following architecture:
 
@@ -109,21 +116,10 @@ It resides inside **electron/ElectronClient/lib** and has the following architec
 
 To create new features for the Client there is a tutorial on explaining how you can do this. You can find the tutorial inside the wiki with the following link:
 
-[Creating features for the Servoy Electron Client](https://github.com/DionDavid/electron/wiki/Creating-features-for-the-Servoy-Electron-Client) 
+[Creating features for the Servoy Electron Client](https://github.com/DionDavid/electron/wiki/Creating-features-for-the-Servoy-Electron-Client)
 
 Furthermore, to get a clear understanding of how the processes in Electron work, you can look up the other pages inside the wiki.
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details
-
-
-
-
-
-
-
-
-
-
-
