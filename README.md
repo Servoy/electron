@@ -26,7 +26,8 @@ Therefore, the Servoy Electron Client has a modern UI/UX and has the the possibi
       - [Changing app icon](#changing-app-icon)
       - [packaging the application](#packaging-the-application)
       - [How is the packaging done?](#how-is-the-packaging-done)
-  - [How to create features for the Servoy Electron Client?](#how-to-create-features-for-the-servoy-electron-client)
+  - [Creation of features](#creation-of-features)
+  - [License](#license)
 
 ## Setup
 
