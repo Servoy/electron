@@ -27,11 +27,13 @@ The setup for further local development of the Servoy Electron Client.
 
 ### Prerequisites
 
-Make sure you have Node.js, Python 2.x, installed on your system. Windows users will also require Visual Studio
+Make sure you have Node.js, Python 2.x and the Servoy Developer installed on your system. Windows users will also require Visual Studio
 
 [Python](https://www.python.org/downloads/) 
 
 [Node.js](https://nodejs.org/en/) >= 7
+
+[Servoy Developer](https://servoy.com/download/)
 
 [Visual Studio](https://www.visualstudio.com/vs/)
 
