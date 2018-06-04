@@ -6,14 +6,14 @@ All the badges are tested against app inside the ElectronClient
 
 This client is made as replacement of the Servoy Smart Client.
 
+<a href="url"><img src="https://raw.githubusercontent.com/wiki/DionDavid/electron/images/home.jpg" height="400" width="650" ></a>
+
 Two issues with the Servoy Smart Client:
 
 1.	The Smart Client is based on Java Swing technology, which does not provide the features to build a modern UI/UX.
 2.	The Smart Client relies on Java, this dependency causes maintenance work, especially around code signing and security caused by new Java releases.
 
 Therefore, the Servoy Electron Client has a modern UI/UX and has the the possibility of using the Servoy NG-Client with access to the local functionalities of the operating system.
-
-<a href="url"><img src="https://raw.githubusercontent.com/wiki/DionDavid/electron/images/home.jpg" height="400" width="650" ></a>
 
 ## Table of Contents
 
