@@ -111,6 +111,13 @@ To create new features for the Client there is a tutorial on explaining how you 
 
 Furthermore, to get a clear understanding of how the processes in Electron work, you can look up the other pages inside the wiki.
 
+## License
+
+This project is licensed under NPOSL-3.0. A short summary of this license is:
+
+It can only be used as non-profit
+Your code must be open-source, even modifications of the code
+
 
 
 
