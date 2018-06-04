@@ -19,7 +19,7 @@ This client is made for the possibility of using the NG-Client with access to th
       - [Changing app icon](#changing-app-icon)
       - [packaging the application](#packaging-the-application)
       - [How is the packaging done?](#how-is-the-packaging-done)
-  - [How to create features for the Servoy Electron Client?](#how-to-create-features-for-the-servoy-electron-client)
+  - [Creation of features](#Creation of features)
 
 ## Setup
 
