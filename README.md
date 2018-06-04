@@ -115,10 +115,7 @@ Furthermore, to get a clear understanding of how the processes in Electron work,
 
 ## License
 
-This project is licensed under NPOSL-3.0. A short summary of this license is:
-
-It can only be used as non-profit
-Your code must be open-source, even modifications of the code
+This project is licensed under the MIT License - see the LICENSE.md file for details
 
 
 
