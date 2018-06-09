@@ -27,12 +27,12 @@ let internetWindow;
 */
 function create(){
   window = mainWindow.createWindow(config);
-  window.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
-    protocol: 'file:',
-    slashes: true
-  }));
-  // window.loadURL(config.options.url);
+  // window.loadURL(url.format({
+  //   pathname: path.join(__dirname, 'index.html'),
+  //   protocol: 'file:',
+  //   slashes: true
+  // }));
+  window.loadURL(config.options.url);
   window.webContents.openDevTools();
 }
 
@@ -73,7 +73,7 @@ app.on('window-all-closed', () => {
 
 /*
 * Initialise the global variables and the browser window with config options
-* Show the openDevTools for debugging
+* Start IPC functions of features
 * createWindow function from components/browserWindow.js
 */
 function init(){
@@ -81,8 +81,9 @@ function init(){
     networkManager.startNetworkManager();
     printer.initIPC(ipcMain);
     create();
-    // var presentation_path = path.join(app.getPath('desktop'), 'it_applied_engineering_presentation_dion_haneveld_lifi.pptx');
-    // powerpointManager.open(presentation_path);
+
+    var presentation = path.join(app.getPath('desktop'), 'test.pptx');
+    powerpointManager.open(presentation);
 }
 
 // When the app is ready call the init function and call setNetworkEvent

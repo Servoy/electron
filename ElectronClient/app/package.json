@@ -24,10 +24,10 @@
     "pupa": "^1.0.0",
     "resolv": "^1.0.0",
     "uglify-js": "^3.3.28",
-    "unused-filename": "^1.0.0",
-    "node-gyp": "^3.6.2"
+    "unused-filename": "^1.0.0"
   },
   "devDependencies": {
+    "node-gyp": "^3.6.2",
     "snyk": "^1.82.0"
   },
   "repository": {
