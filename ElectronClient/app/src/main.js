@@ -81,9 +81,8 @@ function init(){
     networkManager.startNetworkManager();
     printer.initIPC(ipcMain);
     create();
-
-    var presentation = path.join(app.getPath('desktop'), 'test.pptx');
-    powerpointManager.open(presentation);
+    // var presentation = path.join(app.getPath('desktop'), 'test.pptx');
+    // powerpointManager.open(presentation);
 }
 
 // When the app is ready call the init function and call setNetworkEvent
