@@ -1,30 +1,31 @@
 <project name="RunElectron">
 <property name="name" value="--name electronsample" />
-<property name="platform" value="--platform darwin" />
+<property name="platform" value="--platform windows" />
 <property name="shell" value="/bin/sh" />
 <property name="arch" value="--arch=x64" />
 <property name="switch" value="" />
 <property name="url" value=" http://192.168.43.197:8080/solutions/ElectronSample/index.html?f=Main" />
 <property name="cli-command" value="node cli.js ${name} ${platform} ${url}" />
+
+<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+  <classpath>
+    <pathelement location="./ant.lib/ant-contrib/ant-contrib-1.0b3.jar"/>
+  </classpath>
+</taskdef>
+    
 <condition property="isWindows">
     <equals arg1="${platform}" arg2="--platform windows"/>
-    <equals arg1="${shell}" arg2="cmd"/>
-    <equals arg1="${switch}" arg2="/c"/>
 </condition>
 <condition property="isMac">
     <equals arg1="${platform}" arg2="--platform darwin"/>
-    <equals arg1="${shell}" arg2="/bin/sh"/>
-    <equals arg1="${switch}" arg2="-c"/>
 </condition>
 <condition property="isLinux">
     <equals arg1="${platform}" arg2="--platform linux"/>
-    <equals arg1="${shell}" arg2="/bin/sh"/>
-     <equals arg1="${switch}" arg2="-c"/>
 </condition>
 
 <target name="run.electron">
   <antcall target="run.electron.init"/>
-  <antcall target="run.electron.cli"/>
+  <!-- <antcall target="run.electron.cli"/> -->
   <antcall target="run.electron.clean"/>
 </target>
 
@@ -54,19 +55,46 @@
     <copy todir="ElectronClient/app/src/components" >
       <fileset dir="windows" includes="managers/**"/>
     </copy>
+    
 </target>
 
 <target name="run.electron.mac" if="isMac">
     <echo message="Mac Target" />
+     
     <antcall target="run.electron.install"/>
 </target>
 
 <target name="run.electron.linux" if="isLinux">
-    <echo message="Linux Target" />
+     <echo message="Linux Target" />
+     
     <antcall target="run.electron.install"/>
 </target>
 
 <target name="run.electron.install">
+  <if>
+    <equals arg1="${platform}" arg2="--platform windows"/>
+    <then>
+      <var name="shell" unset="true"/>
+      <var name="switch" unset="true"/>
+      <property name="shell" value="cmd" />
+      <property name="switch" value="/c" />
+    </then>
+    <elseif>
+      <equals arg1="${platform}" arg2="--platform darwin"/>
+      <then>
+        <var name="shell" unset="true"/>
+        <var name="switch" unset="true"/>
+        <property name="shell" value="/bin/sh" />
+        <property name="switch" value="-c" />
+      </then>
+    </elseif>
+    <else>
+      <var name="shell" unset="true"/>
+      <var name="switch" unset="true"/>
+      <property name="shell" value="/bin/sh" />
+      <property name="switch" value="-c" />
+    </else>
+  </if>
    <echo>NPM install</echo>
 	  <exec dir="ElectronClient/app" executable="${shell}">
 	     <arg value="${switch}"/>
@@ -79,7 +107,32 @@
 </target>
 
 <target name="run.electron.cli">
+  <if>
+    <equals arg1="${platform}" arg2="--platform windows"/>
+    <then>
+      <var name="shell" unset="true"/>
+      <var name="switch" unset="true"/>
+      <property name="shell" value="cmd" />
+      <property name="switch" value="/c" />
+    </then>
+    <elseif>
+      <equals arg1="${platform}" arg2="--platform darwin"/>
+      <then>
+        <var name="shell" unset="true"/>
+        <var name="switch" unset="true"/>
+        <property name="shell" value="/bin/sh" />
+        <property name="switch" value="-c" />
+      </then>
+    </elseif>
+    <else>
+      <var name="shell" unset="true"/>
+      <var name="switch" unset="true"/>
+      <property name="shell" value="/bin/sh" />
+      <property name="switch" value="-c" />
+    </else>
+  </if>
    <echo>Running Command Line Inteface to create executable</echo>
+  <echo>${switch} ${shell}</echo>
 	  <exec dir="ElectronClient/lib" executable="${shell}">
 	     <arg value="${switch}"/>
        <arg value="${cli-command}"/>
@@ -87,13 +140,36 @@
 </target>
 
 <target name="run.electron.clean">
+  <if>
+    <equals arg1="${platform}" arg2="--platform windows"/>
+    <then>
+      <var name="shell" unset="true"/>
+      <var name="switch" unset="true"/>
+      <property name="shell" value="cmd" />
+      <property name="switch" value="/c" />
+      <exec dir="ElectronClient" executable="${shell}">
+        <arg value="${switch}"/>
+        <arg value='RMDIR /S /Q "node_modules"'/>
+        <arg value='RMDIR /S /Q "app/node_modules"'/>
+        <arg value='RMDIR /S /Q "app/src/components/managers/office"'/>
+        <arg value='RMDIR /S /Q "app/src/libraries/office-library" '/>
+      </exec>
+    </then>
+    <else>
+      <var name="shell" unset="true"/>
+      <var name="switch" unset="true"/>
+      <property name="shell" value="/bin/sh" />
+      <property name="switch" value="-c" />
+      <exec dir="ElectronClient" executable="${shell}">
+        <arg value="${switch}"/>
+        <arg value="rm -r node_modules"/>
+        <arg value="rm -r app/node_modules"/>
+        <arg value="rm -f app/src/components/managers/office"/>
+        <arg value="rm -f app/src/libraries/office-library"/>
+      </exec>
+    </else>
+  </if>
   <echo>Clean</echo>
-  <exec dir="ElectronClient" executable="${shell}">
-     <arg value="${switch}"/>
-     <arg value="rm -r node_modules"/>
-     <arg value="rm -r app/node_modules"/>
-     <arg value="rm -f app/src/components/managers/office"/>
-     <arg value="rm -f app/src/libraries/office-library"/>
-</exec>
+ 
 </target>
 </project>
