@@ -1,17 +1,25 @@
 <project name="RunElectron">
 <property name="name" value="--name electronsample" />
 <property name="platform" value="--platform darwin" />
+<property name="shell" value="/bin/sh" />
 <property name="arch" value="--arch=x64" />
+<property name="switch" value="" />
 <property name="url" value=" http://192.168.43.197:8080/solutions/ElectronSample/index.html?f=Main" />
 <property name="cli-command" value="node cli.js ${name} ${platform} ${url}" />
 <condition property="isWindows">
     <equals arg1="${platform}" arg2="--platform windows"/>
+    <equals arg1="${shell}" arg2="cmd"/>
+    <equals arg1="${switch}" arg2="/c"/>
 </condition>
 <condition property="isMac">
     <equals arg1="${platform}" arg2="--platform darwin"/>
+    <equals arg1="${shell}" arg2="/bin/sh"/>
+    <equals arg1="${switch}" arg2="-c"/>
 </condition>
 <condition property="isLinux">
     <equals arg1="${platform}" arg2="--platform linux"/>
+    <equals arg1="${shell}" arg2="/bin/sh"/>
+     <equals arg1="${switch}" arg2="-c"/>
 </condition>
 
 <target name="run.electron">
@@ -60,28 +68,28 @@
 
 <target name="run.electron.install">
    <echo>NPM install</echo>
-	  <exec dir="ElectronClient/app" executable="/bin/sh">
-	     <arg value="-c"/>
+	  <exec dir="ElectronClient/app" executable="${shell}">
+	     <arg value="${switch}"/>
        <arg value="npm install"/>
 	</exec>
-   <exec dir="ElectronClient" executable="/bin/sh">
-       <arg value="-c"/>
+   <exec dir="ElectronClient" executable="${shell}">
+       <arg value="${switch}"/>
        <arg value="npm install"/>
   </exec>
 </target>
 
 <target name="run.electron.cli">
    <echo>Running Command Line Inteface to create executable</echo>
-	  <exec dir="ElectronClient/lib" executable="/bin/sh">
-	     <arg value="-c"/>
+	  <exec dir="ElectronClient/lib" executable="${shell}">
+	     <arg value="${switch}"/>
        <arg value="${cli-command}"/>
 	</exec>
 </target>
 
 <target name="run.electron.clean">
   <echo>Clean</echo>
-  <exec dir="ElectronClient" executable="/bin/sh">
-     <arg value="-c"/>
+  <exec dir="ElectronClient" executable="${shell}">
+     <arg value="${switch}"/>
      <arg value="rm -r node_modules"/>
      <arg value="rm -r app/node_modules"/>
      <arg value="rm -f app/src/components/managers/office"/>
