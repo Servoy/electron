@@ -1,8 +1,15 @@
-const timers = require('timers');
+const Analytics = require('electron-google-analytics');
 const EventEmitter = require('events');
 const Ping = require('ping-lite');
 const dns = require('dns-socket');
+const timers = require('timers');
 const resolv = require('resolv');
+const path = require('path');
+const fs = require('fs');
+
+const config_file_path = path.join(__dirname, './../../config/', 'servoy.json');
+const config = JSON.parse(fs.readFileSync(config_file_path, 'utf8'));
+const analytics = new Analytics.default(config.options.anaylitcs_tracking_code);
 
 const dnsLatency = (hostname, dnsSocket) =>
   new Promise((resolve, reject) => {
@@ -56,16 +63,26 @@ const networkStatus = (options) => {
   return latencies;
 };
 
-function startNetworkManager(){
+function sendAnalytics(ping, dns){
+   return analytics.send('latency', { dns: dns, ping: ping})
+  .then((response) => {
+    console.log(response);
+    return response;
+  }).catch((err) => {
+    console.log(err);
+    return err;
+  });
+}
+
+function startNetworkManager(hostname, address){
   const time = minToMs(1);
   networkStatus({
     timeoutMs: time,
     intervalMs: time,
-    hostname: 'google.com',
-    address: '8.8.8.8'
-  }).on('latencies', ({dns, ping}) => {
-    console.log('ping: ' + ping);
-    console.log('dns: ' + dns);
+    hostname: hostname,
+    address: address
+  }).on('latency', ({dns, ping}) => {
+    sendAnalytics(ping, dns);
   });
 };
 

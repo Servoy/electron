@@ -3,23 +3,6 @@ const {dialog} = require('electron');
 const printer = require('printer');
 
 
-function initIPC(ipcMain){
-
-// Wait for the print-file event
-ipcMain.on('print-file', function(event, file_object){
-    printer.printFile(file_object);
-});
-
-// Wait for the selected_printer event
-ipcMain.on('selected-printer', function(event, printer_object) {
-     printer.printText(printer_object);
-});
-
-// Wait for the get-printers event
-ipcMain.on('get-printers', function(event, _placeholder){
-    event.sender.send('printer-list', printer.getPrinters());
-});
-}
 
 /**
 * This function prints text to a printer
@@ -122,6 +105,24 @@ function successPDF(){
 function getPrinters(){
    var printer_list = printer.getPrinters();
    return printer_list;
+}
+
+function initIPC(ipcMain){
+
+// Wait for the print-file event
+ipcMain.on('print-file', function(event, file_object){
+    printFile(file_object);
+});
+
+// Wait for the selected_printer event
+ipcMain.on('selected-printer', function(event, printer_object) {
+     printText(printer_object);
+});
+
+// Wait for the get-printers event
+ipcMain.on('get-printers', function(event, _placeholder){
+    event.sender.send('printer-list', printer.getPrinters());
+});
 }
 
 module.exports = {

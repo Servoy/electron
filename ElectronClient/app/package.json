@@ -15,6 +15,7 @@
     "dns-socket": "^4.0.0",
     "electron": "^2.0.2",
     "electron-edge-js": "^8.3.4",
+    "electron-google-analytics": "^0.1.0",
     "electron-window-state": "^4.1.1",
     "ext-name": "^5.0.0",
     "lodash": "^4.17.10",

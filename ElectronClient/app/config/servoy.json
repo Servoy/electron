@@ -1,12 +1,11 @@
 {
     "injectScripts": {
-
     },
      "options": {
        "title": "Electron Client",
        "width": 1000,
        "height": 800,
-       "frame": false,
+       "frame": true,
        "icon": "app/resources/icons/img_543467.png",
        "url": "http://localhost:8080/solutions/ElectronSample/index.html",
        "resizable": true,
@@ -15,6 +14,10 @@
          "javascript": true,
          "plugins": true,
          "nodeIntegration":true
-       }
+       },
+       "analytics_client_id": "986273842001-7a88flu5lqjuormjtri9fld4mbmfuh7i.apps.googleusercontent.com",
+       "analytics_client_secret": "ElbIQrxM5YgLYaRaA3OVAWWs",
+       "analytics_tracking_code": "UA-120990472-1",
+       "dns_address": "8.8.8.8"
      }
 }

@@ -37,12 +37,12 @@ function setDownloadListener(window){
 			getFilenameFromMime(filename, item.getMimeType());
 	    filePath = unusedFilename.sync(path.join(dir, name));
 			item.setSavePath(filePath);
-      updated(item)
-      done(item);
+      updated(item, window)
+      done(item, window);
   });
   }
 
-  function updated(item){
+  function updated(item, window){
     item.on('updated', () => {
       receivedBytes = [...downloadItems].reduce((receivedBytes, item) => {
           receivedBytes += item.getReceivedBytes();
@@ -54,7 +54,7 @@ function setDownloadListener(window){
 		});
   }
 
-  function done(item){
+  function done(item, window){
     item.on('done', (e, state) => {
       completedBytes += item.getTotalBytes();
       downloadItems.delete(item);

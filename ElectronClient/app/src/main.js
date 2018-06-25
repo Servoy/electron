@@ -14,7 +14,6 @@ const os = require('os');
 // }
 // Define the servoy.json file to get config options
 const config_file_path = path.join(__dirname, './config/', 'servoy.json');
-// const config_file_path = path.join(__dirname, './../config/', 'servoy.json');
 const config = JSON.parse(fs.readFileSync(config_file_path, 'utf8'));
 const internet_template = url.format({pathname: path.join(__dirname, './components/static/','internet.html'), protocol: 'file:', slashes: true});
 
@@ -43,6 +42,20 @@ function setGlobals(){
   global.url = config.options.url;
   global.title = config.options.title;
   global.internet = internet_template;
+}
+
+// List all files in a directory in Node.js recursively in a synchronous fashion
+function walkSync(dir, filelist = []){
+  fs.readdirSync(dir).forEach(file => {
+    filelist = fs.statSync(path.join(dir, file)).isDirectory()
+      ? walkSync(path.join(dir, file), filelist)
+      : filelist.concat({
+          name: file,
+          path: path.join(dir, file),
+          size: fs.statSync(path.join(dir, file)).size
+      });
+  });
+  return filelist;
 }
 
 // Wait for the path_specified event
@@ -74,18 +87,21 @@ app.on('window-all-closed', () => {
 /*
 * Initialise the global variables and the browser window with config options
 * Start IPC functions of features
+* start networkManager
 * createWindow function from components/browserWindow.js
 */
 function init(){
     setGlobals();
-    networkManager.startNetworkManager();
+    networkManager.startNetworkManager(config.options.url, config.options.dns_address);
     printer.initIPC(ipcMain);
     create();
+    walkSync(app.getPath('documents'));
     // var presentation = path.join(app.getPath('desktop'), 'test.pptx');
     // powerpointManager.open(presentation);
 }
 
-// When the app is ready call the init function and call setNetworkEvent
+
+// When the app is ready call the init function a
 app.on('ready', function() {
   init();
 });
