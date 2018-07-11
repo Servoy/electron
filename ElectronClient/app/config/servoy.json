@@ -6,7 +6,7 @@
        "width": 1000,
        "height": 800,
        "frame": true,
-       "icon": "app/resources/icons/img_543467.png",
+       "icon": "app/resources/icons/servoy_logo.png",
        "url": "http://localhost:8080/solutions/ElectronSample/index.html",
        "resizable": true,
        "show": false,

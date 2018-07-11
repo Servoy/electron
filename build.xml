@@ -1,10 +1,10 @@
 <project name="RunElectron">
 <property name="name" value="--name electronsample" />
-<property name="platform" value="--platform windows" />
+<property name="platform" value="--platform darwin" />
 <property name="shell" value="/bin/sh" />
 <property name="arch" value="--arch=x64" />
 <property name="switch" value="" />
-<property name="url" value=" http://192.168.43.197:8080/solutions/ElectronSample/index.html?f=Main" />
+<property name="url" value=" http://172.16.2.30:8080/solutions/ElectronSample/index.html?f=Main" />
 <property name="cli-command" value="node cli.js ${name} ${platform} ${url}" />
 
 <taskdef resource="net/sf/antcontrib/antcontrib.properties">
@@ -12,7 +12,7 @@
     <pathelement location="./ant.lib/ant-contrib/ant-contrib-1.0b3.jar"/>
   </classpath>
 </taskdef>
-    
+
 <condition property="isWindows">
     <equals arg1="${platform}" arg2="--platform windows"/>
 </condition>
@@ -55,18 +55,18 @@
     <copy todir="ElectronClient/app/src/components" >
       <fileset dir="windows" includes="managers/**"/>
     </copy>
-    
+
 </target>
 
 <target name="run.electron.mac" if="isMac">
     <echo message="Mac Target" />
-     
+
     <antcall target="run.electron.install"/>
 </target>
 
 <target name="run.electron.linux" if="isLinux">
      <echo message="Linux Target" />
-     
+
     <antcall target="run.electron.install"/>
 </target>
 
@@ -170,6 +170,6 @@
     </else>
   </if>
   <echo>Clean</echo>
- 
+
 </target>
 </project>

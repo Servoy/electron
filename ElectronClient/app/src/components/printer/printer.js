@@ -2,8 +2,6 @@ filename = process.argv[2] || __filename;
 const {dialog} = require('electron');
 const printer = require('printer');
 
-
-
 /**
 * This function prints text to a printer
 * @param {JSON Object}

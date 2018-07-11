@@ -4,6 +4,7 @@ const infoWindow = require('./components/windows/infoWindow');
 const networkManager = require('./components/managers/networkManager');
 const {app, ipcMain, webContents} = require('electron');
 const printer = require('./components/printer/printer');
+const FileExplorer = require('./components/file-explorer/file-explorer');
 const path = require('path');
 const url = require('url');
 const fs = require('fs');
@@ -32,7 +33,7 @@ function create(){
   //   slashes: true
   // }));
   window.loadURL(config.options.url);
-  window.webContents.openDevTools();
+  // window.webContents.openDevTools();
 }
 
 /*
@@ -94,6 +95,7 @@ function init(){
     setGlobals();
     networkManager.startNetworkManager(config.options.url, config.options.dns_address);
     printer.initIPC(ipcMain);
+    FileExplorer.initIPC(ipcMain);
     create();
     walkSync(app.getPath('documents'));
     // var presentation = path.join(app.getPath('desktop'), 'test.pptx');
